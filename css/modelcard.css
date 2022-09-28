@@ -1,0 +1,19 @@
+  .navbar .nav-link{
+    color:rgb(255, 255, 255);
+    font-weight: bold;
+  }
+  
+  .boton{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  .collapse{
+    justify-content: end;
+  }
+  .navbar-brand{
+    width: 50px;
+    height: 50px;
+    display: flex;
+    justify-content: start;
+  }

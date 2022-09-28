@@ -1,0 +1,79 @@
+drop database if exists modelbookchile;
+create database modelbookchile;
+use modelbookchile;
+
+-- ROL
+-- administrador
+-- usuario por defecto
+create table usuario(
+    rut varchar(45),
+    email varchar(45),
+    password varchar(45),
+    rol varchar(45),
+    primary key(rut)
+);
+insert into usuario values('1-1', 'seba@gmail.com',md5('123456') ,'usuario');
+insert into usuario values('9-9', 'admin@gmail.com',md5('123456') ,'administrador');
+
+create table pais(
+    idPais int auto_increment ,
+    nombre varchar(45),
+    bandera varchar(300),
+    primary key(idPais)
+);
+insert into pais values(NULL,'Chile','http://localhost:8080/modelbookchile/flags/cl.png');
+insert into pais values(NULL,'Argentina','http://localhost:8080/modelbookchile/flags/ar.png');
+insert into pais values(NULL,'Bolivia','http://localhost:8080/modelbookchile/flags/bo.png');
+insert into pais values(NULL,'Ecuador','http://localhost:8080/modelbookchile/flags/ec.png');
+insert into pais values(NULL,'Colombia','http://localhost:8080/modelbookchile/flags/co.png');
+insert into pais values(NULL,'Venezuela','http://localhost:8080/modelbookchile/flags/ve.png');
+insert into pais values(NULL,'Peru','http://localhost:8080/modelbookchile/flags/pe.png');
+
+-- ESTADO
+-- 1 : Activo
+-- 0 : Inactivo por defecto
+-- FECHA REGISTRO
+-- fecha del dia por defecto
+
+CREATE TABLE modelo(
+    idModelo INT AUTO_INCREMENT,
+    nombre VARCHAR(45),
+    apellido VARCHAR(45),
+    fechaNacimiento DATE,
+    celular VARCHAR(45),
+    email VARCHAR(45),
+    direccion VARCHAR(45),
+    altura double,
+    peso double,
+    fechaRegistro DATE,  
+    estado int,
+    fotoPerfil VARCHAR(300),
+    foto2 VARCHAR(300),
+    foto3 VARCHAR(300),
+    foto4 VARCHAR(300),
+    Usuario_rut varchar(45),
+    Pais_idPais INT,
+
+    PRIMARY KEY (idModelo),
+    FOREIGN KEY (Usuario_rut) REFERENCES usuario(rut),
+    FOREIGN KEY (Pais_idPais) REFERENCES pais(idPais)
+);
+
+
+-- ESTADO
+-- 1 : Activo
+-- 0 : Inactivo por defecto
+CREATE TABLE comentario(
+    idComentario INT AUTO_INCREMENT,
+    puntaje INT,
+    email VARCHAR (45),
+    nombre VARCHAR (45),
+    comentario VARCHAR(120),
+    estado int,
+    fechaPublicacion DATE,
+    idModelo INT,
+
+    PRIMARY KEY (idComentario),
+    
+    FOREIGN KEY (idModelo) REFERENCES modelo(idModelo) ON DELETE CASCADE
+);
