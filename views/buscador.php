@@ -1,154 +1,72 @@
-<?php
-    ini_set('display_errors', 1);
-    ini_set('display_startup_errors', 1);
-    error_reporting(E_ALL); 
-
-    // OBTENER PAISES PARA EL COMBOBOX
-    use models\ModeloModel as ModeloModel;
-    require_once("../models/ModeloModel.php");
-    $model = new ModeloModel();
-    $paises = $model->getPais();
-    
-    session_start();
-
-?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
-    <link rel="stylesheet" href="../css/style.css">
-    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
+    <link rel="stylesheet" href="https://unpkg.com/flowbite@1.5.3/dist/flowbite.min.css" />
     <title>Buscador</title>
 </head>
-<body style="background-image: url(../img/fondo.jpg);background-size: 100%;  ">
-    <!-- ========== MENU START ========== -->
-    <nav class="black darken-4 padding-nav">
-        <div class="nav-wrapper" style="padding-right: 20px; padding-left: 20px;">
-            <a href="#" data-target="slide-out" class="sidenav-trigger"><i class="material-icons">menu</i></a>
-            <a href="../index.php" class="brand-logo "> <img class="logo" src="../img/icon.jpg"> Model Book Chile </a>
-                <ul id="nav-mobile" class="right hide-on-med-and-down">
-                    <li>+</li> 
-                    <li class="active"><a href="../index.php">INICIO</a></li>
-                    <li><a href="./login.php">INGRESA AQUI PARA PUBLICAR</a></li>
-                    <li><a href="./buscador.php">BUSCADOR</a></li>
-                    <li><a href="./recomendaciones.php">RECOMENDACIONES</a></li>
-                    <li>+</li> 
-            </ul>
-        </div>
-    </nav>
-    <!-- ========== NAV MOVIL ========== -->
-    <ul id="slide-out" class="sidenav">
-        <li><div class="user-view">
-                <div class="background" >
-                    <img width="300" src="../img/icon2.jpg"> 
-                </div>
-                <a href="#user"><img class="circle" src="../img/icon.jpg"></a>
-                <a href="../index.php"><span class="white-text name">Model Book Chile</span></a>
-                <a href="#email"><span class="white-text email">modelbook.chile@gmail.com</span></a>
-        </li></div>
-        <li><a href="./login.php">INGRESA AQUI PARA PUBLICAR</a></li>
-        <li><a href="./buscador.php">BUSCADOR</a></li>
-		<li><a href="./recomendaciones.php">RECOMENDACIONES</a></li>
-    </ul>
-    <!-- ========== FIN NAV MOVIL ========== -->
-
+<body>
     
-    <!-- ========== BUSCADOR POR PAIS ========== -->
-    <div class="container center" >
-        <div class="row center">
-            <div class="col l2 m4 s12" style=" margin: 20px;"></div>
-
-            <div class="col l6 m6 s12 grey lighten-2" style=" margin: 20px;">
-                <h4 class="center">Buscardor</h4>
-                <form action="../controllers/ControlBuscarPais.php" method="post">
-                    <div class="input-field">
-                        <select class="browser-default" name="Pais_idPais">
-                            <option value="">seleccione un pais</option>
-                            <?php foreach ($paises as $paises){?>
-                                <option value=<?=$paises['idPais']?> data-icon="<?=$paises['bandera']?>"> <?=$paises['nombre']?></option>
-                            <?php } ?> 
-                        </select>     
-                    </div>        
-                    <button class="btn black ancho-100">Buscar</button>
-                </form>
-                <p class="red-text">
-                    <?php
-                        if(isset($_SESSION['errorBuscador'])){
-                            echo $_SESSION['errorBuscador'];
-                            unset($_SESSION['errorBuscador']);
-                        }
-                    ?>
-                </p>
-            </div>                 
-        </div>               
-    </div>
-    <!-- ========== BUSCADOR POR PAIS ========== -->
-    <br><br>
-
-    <!-- ========== CARDS MODELOS ========== -->   
-    <?php if(isset($_SESSION['buscar'])) { ?>
-    <div class="container">
-        <div class="row">
-            <form action="../controllers/ControlPerfilModelo.php" method="post">
-                <?php foreach ($_SESSION['modelo'] as $item){?>
-                    <div class="col l3 m3 s12">
-                        <div class="card">
-                            <div class="card-image">
-                                <img src="<?=$item['fotoPerfil']?>" style="height: 200px; width: 100%; object-fit: cover;" >
-                                    <span style="font-size:25px;color:orange; margin-left: 10px;"><?=$item['nombre']?></span> <br>
-                                    <span style="font-size:25px;color:orange; margin-left: 10px;"> <?=$item['apellido']?></span>
-                            </div>
-                            
-                            <div class="card-action grey lighten-2">
-                                <button name="bt_perfil" value="<?=$item["idModelo"]?>"  class="black" >
-                                    <a class="waves-effect waves-teal btn-flat">ir al perfil</a>
-                                </button>
-                            </div>
-                        </div>
-                    </div>
-                <?php } ?> 
-            </form> 
+<nav class="bg-white border-gray-200 px-2 sm:px-4 py-2.5 rounded dark:bg-gray-900">
+  <div class="container flex flex-wrap justify-between items-center mx-auto">
+  <a href="https://flowbite.com/" class="flex items-center">
+      <img src="https://flowbite.com/docs/images/logo.svg" class="mr-3 h-6 sm:h-9" alt="Flowbite Logo">
+      <span class="self-center text-xl font-semibold whitespace-nowrap dark:text-white">Flowbite</span>
+  </a>
+  <div class="flex items-center md:order-2">
+      <button type="button" class="flex mr-3 text-sm bg-gray-800 rounded-full md:mr-0 focus:ring-4 focus:ring-gray-300 dark:focus:ring-gray-600" id="user-menu-button" aria-expanded="false" data-dropdown-toggle="user-dropdown" data-dropdown-placement="bottom">
+        <span class="sr-only">Open user menu</span>
+        <img class="w-8 h-8 rounded-full" src="/docs/images/people/profile-picture-3.jpg" alt="user photo">
+      </button>
+      <!-- Dropdown menu -->
+      <div class="hidden z-50 my-4 text-base list-none bg-white rounded divide-y divide-gray-100 shadow dark:bg-gray-700 dark:divide-gray-600" id="user-dropdown" style="position: absolute; inset: 0px auto auto 0px; margin: 0px; transform: translate3d(0px, 3280px, 0px);" data-popper-reference-hidden="" data-popper-escaped="" data-popper-placement="bottom">
+        <div class="py-3 px-4">
+          <span class="block text-sm text-gray-900 dark:text-white">Bonnie Green</span>
+          <span class="block text-sm font-medium text-gray-500 truncate dark:text-gray-400">name@flowbite.com</span>
         </div>
-    </div>
+        <ul class="py-1" aria-labelledby="user-menu-button">
+          <li>
+            <a href="#" class="block py-2 px-4 text-sm text-gray-700 hover:bg-gray-100 dark:hover:bg-gray-600 dark:text-gray-200 dark:hover:text-white">Dashboard</a>
+          </li>
+          <li>
+            <a href="#" class="block py-2 px-4 text-sm text-gray-700 hover:bg-gray-100 dark:hover:bg-gray-600 dark:text-gray-200 dark:hover:text-white">Settings</a>
+          </li>
+          <li>
+            <a href="#" class="block py-2 px-4 text-sm text-gray-700 hover:bg-gray-100 dark:hover:bg-gray-600 dark:text-gray-200 dark:hover:text-white">Earnings</a>
+          </li>
+          <li>
+            <a href="#" class="block py-2 px-4 text-sm text-gray-700 hover:bg-gray-100 dark:hover:bg-gray-600 dark:text-gray-200 dark:hover:text-white">Sign out</a>
+          </li>
+        </ul>
+      </div>
+      <button data-collapse-toggle="mobile-menu-2" type="button" class="inline-flex items-center p-2 ml-1 text-sm text-gray-500 rounded-lg md:hidden hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-gray-200 dark:text-gray-400 dark:hover:bg-gray-700 dark:focus:ring-gray-600" aria-controls="mobile-menu-2" aria-expanded="false">
+        <span class="sr-only">Open main menu</span>
+        <svg class="w-6 h-6" aria-hidden="true" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" d="M3 5a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1zM3 10a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1zM3 15a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1z" clip-rule="evenodd"></path></svg>
+    </button>
+  </div>
+  <div class="hidden justify-between items-center w-full md:flex md:w-auto md:order-1" id="mobile-menu-2">
+    <ul class="flex flex-col p-4 mt-4 bg-gray-50 rounded-lg border border-gray-100 md:flex-row md:space-x-8 md:mt-0 md:text-sm md:font-medium md:border-0 md:bg-white dark:bg-gray-800 md:dark:bg-gray-900 dark:border-gray-700">
+      <li>
+        <a href="#" class="block py-2 pr-4 pl-3 text-white bg-blue-700 rounded md:bg-transparent md:text-blue-700 md:p-0 dark:text-white" aria-current="page">Home</a>
+      </li>
+      <li>
+        <a href="#" class="block py-2 pr-4 pl-3 text-gray-700 rounded hover:bg-gray-100 md:hover:bg-transparent md:hover:text-blue-700 md:p-0 dark:text-gray-400 md:dark:hover:text-white dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent dark:border-gray-700">About</a>
+      </li>
+      <li>
+        <a href="#" class="block py-2 pr-4 pl-3 text-gray-700 rounded hover:bg-gray-100 md:hover:bg-transparent md:hover:text-blue-700 md:p-0 dark:text-gray-400 md:dark:hover:text-white dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent dark:border-gray-700">Services</a>
+      </li>
+      <li>
+        <a href="#" class="block py-2 pr-4 pl-3 text-gray-700 rounded hover:bg-gray-100 md:hover:bg-transparent md:hover:text-blue-700 md:p-0 dark:text-gray-400 md:dark:hover:text-white dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent dark:border-gray-700">Pricing</a>
+      </li>
+      <li>
+        <a href="#" class="block py-2 pr-4 pl-3 text-gray-700 rounded hover:bg-gray-100 md:hover:bg-transparent md:hover:text-blue-700 md:p-0 dark:text-gray-400 md:dark:hover:text-white dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent dark:border-gray-700">Contact</a>
+      </li>
+    </ul>
+  </div>
+  </div>
+</nav>
 
-    <?php 
-        unset( $_SESSION['buscar']);
-        }
-    ?>
-	<!-- ========== CARDS MODELOS ========== --> 
-
-<script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
-      
-<script src="https://cdn.jsdelivr.net/npm/vue@2"></script>
-<script src="../js/buscarPais.js"></script>
-<script>
-    document.addEventListener('DOMContentLoaded', function() {
-        var elems = document.querySelectorAll('.sidenav');
-        var instances = M.Sidenav.init(elems);
-    });
-    document.addEventListener('DOMContentLoaded', function() {
-    var elems = document.querySelectorAll('select');
-    var instances = M.FormSelect.init(elems, options);
-  });
-
-</script>
 </body>
 </html>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
