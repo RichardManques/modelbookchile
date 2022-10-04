@@ -6,272 +6,408 @@ ini_set('display_errors', 1);
 ?>
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="../css/modelcard.css">
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-gH2yIJqKdNHPEq0n4Mqa/HGKIhSkIHeL5AyhkYV8i59U5AR6csBvApHHNl/vI1Bx" crossorigin="anonymous">
-    <title>Perfil Modelo</title>
-</head>
-<body>
-    <!-- ========== MENU START ==========  -->
-    <nav class="navbar navbar-expand-lg" style="background:#3F267B;">
-        <div class="container-fluid">
-            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-            <span class="navbar-toggler-icon"></span>
-            </button>
-            <div class="collapse navbar-collapse" id="navbarNav">
-            <ul class="navbar-nav">
-                <li class="nav-item">
-                    <a class="nav-link" aria-current="page" href="./index.php">Inicio</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="./views/login.php">Registrarse</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="./views/buscador.php">Buscar</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="./views/recomendaciones.php">Recomendaciones</a>
-                </li>
-            </ul>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Perfil</title>
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.1/css/all.min.css"
+    />
+    <link
+      rel="stylesheet"
+      href="https://unpkg.com/swiper/swiper-bundle.min.css"
+    />
+    <link rel="stylesheet" href="../css/perfilmodelo.css" />
+  </head>
+  <body>
+    <main>
+      <header id="header">
+        <div class="overlay overlay-lg">
+          <img src="./img/shapes/square.png" class="shape square" alt="" />
+          <img src="./img/shapes/circle.png" class="shape circle" alt="" />
+          <img
+            src="./img/shapes/half-circle.png"
+            class="shape half-circle1"
+            alt=""
+          />
+          <img
+            src="./img/shapes/half-circle.png"
+            class="shape half-circle2"
+            alt=""
+          />
+          <img src="./img/shapes/x.png" class="shape xshape" alt="" />
+          <img src="./img/shapes/wave.png" class="shape wave wave1" alt="" />
+          <img src="./img/shapes/wave.png" class="shape wave wave2" alt="" />
+          <img src="./img/shapes/triangle.png" class="shape triangle" alt="" />
+          <img src="./img/shapes/letters.png" class="letters" alt="" />
+          <img src="./img/shapes/points1.png" class="points points1" alt="" />
+        </div>
+
+        <nav>
+          <div class="container">
+            <div class="logo">
+              <img src="./img/logo.png" alt="" />
             </div>
-        </div>
-    </nav>
-    <!-- ========== PERFIL MODELO ========== -->
-    <br><br>
-    <?php if(isset($_SESSION['perfil'])) { ?>
-	    <div class="container grey darken-3 " style="border-radius: 20px; height: 140px" > 
-            <div class="row">
-                <div class="col l6 m6 s12" style="overflow:visible;z-index:9999999999999999999999999999999999999;">
-					<h2 class="wow fadeInLeftBig animated" data-wow-delay="0.3s" 
-                        style="visibility: visible;-webkit-animation-delay: 0.3s; -moz-animation-delay: 0.3s; animation-delay: 0.3s;">
-                        <?=$_SESSION['modelo']['nombre']?> <?=$_SESSION['modelo']['apellido']?> &nbsp;
-						
-						<img src="../img/sello.png" style="width:35px;">  
-                    </h2>       
-				</div> 
 
-                <div class="col l3 m6 s12 porlass" align="left" style="margin-bottom:20px; "></div>	
+            <div class="links">
+              <ul>
+                <li>
+                  <a href="#header">Home</a>
+                </li>
+                <li>
+                  <a href="#services">Services</a>
+                </li>
+                <li>
+                  <a href="#portfolio">Portfolio</a>
+                </li>
+                <li>
+                  <a href="#about">About</a>
+                </li>
+                <li>
+                  <a href="#testimonials">Testimonials</a>
+                </li>
+                <li>
+                  <a href="#contact">Contact</a>
+                </li>
+                <li>
+                  <a href="#hireme" class="active">Hire me</a>
+                </li>
+              </ul>
+            </div>
 
-                <div class="col l3 m6 s12 porlass"  >
-                    <div class="telefono" style="margin-top: 45px;" >	
-                        <a href="https://twitter.com"  class="btn" style="background-color:#4a9cf3; border-radius:5px;padding:5px; margin-left: 10px; height: max-content; " 
-                            id="b" target="_blank"><span class="label" style="font-size:12px;">Twittear</span>
-                        </a> 
-                        <a href="https://wa.me" style="float:left">
-                            <img src="../img/ws.png" style="height:40px;float:left;" >
-                            <span style="font-family:Trebuchet MS;color: #009900;float: left;font-size: 30px;"> 
-                                &nbsp;<?=$_SESSION['modelo']['celular']?>
-                            </span>
-                        </a>                     
-                    </div>
-                </div>      
-			</div>	
-        </div>
-
-        <!-- ==========  CONTENEDOR DE FOTOS ========== -->
+            <div class="hamburger-menu">
+              <div class="bar"></div>
+            </div>
+          </div>
+        </nav>
+      </header>
+      <!-- SECCION PRESENTACION MODELO -->
+      <?php if(isset($_SESSION['perfil'])) { ?>
+      <section class="about section" id="about">
         <div class="container">
-            <div class="row" style="margin-top: 20px;   ">
-                <div class="col l3 m6 s12">
-                    <img class="materialboxed"  style="height: 250px; width: 250px; object-fit: cover;" 
-                    src="<?= $_SESSION['modelo']['fotoPerfil'] ?>">
-                </div>
-                <div class="col l3 m6 s12">
-                    <img class="materialboxed"  style="height: 250px; width: 250px; object-fit: cover;" 
-                    src="<?= $_SESSION['modelo']['foto2'] ?>">
-                </div>
-                <div class="col l3 m6 s12">
-                    <img class="materialboxed" style="height: 250px; width: 250px; object-fit: cover;" 
-                    src="<?= $_SESSION['modelo']['foto3'] ?>">
-                </div>
-                <div class="col l3 m6 s12">
-                    <img class="materialboxed" style="height: 250px; width: 250px; object-fit: cover;" 
-                    src="<?= $_SESSION['modelo']['foto4'] ?>">
-                </div>
+          <div class="section-header">
+            <h3 class="title" data-title=""><?=$_SESSION['modelo']['nombre']?> <?=$_SESSION['modelo']['apellido']?> &nbsp;</h3>
+          </div>
+
+          <div class="section-body grid-2">
+            <div class="column-1">
+              <h3 class="title-sm">Acerca de mi</h3>
+              <p class="text">
+                Lorem ipsum dolor, sit amet consectetur adipisicing elit. Ab modi, error minima ducimus aliquam tenetur consequatur molestias magnam consequuntur suscipit iste fugiat vero repellat officia nesciunt reiciendis ad vel possimus?
+              </p>
             </div>
+
+            <div class="column-2 image">
+              <img src="./img/shapes/points4.png" class="points" alt="" />
+              <img src="<?= $_SESSION['modelo']['fotoPerfil'] ?>" class="z-index" alt="" />
+            </div>
+          </div>
         </div>
-        <!-- ========== FIN CONTENEDOR DE FOTOS ========== -->
+      </section>
+      <!-- FIN SECCION PRESENTACION MODELO -->
 
-        
-        <div class="container" style="border-radius: 20px;" > 
-            <div class="row">
-                <!-- ========== CONTENEDOR DATOS GENERALES ========== -->
-                <div class="col l6 m6 s12 grey lighten-3" style=" padding: 30px; height: 480px; border-radius: 20px;">
-                    <div class="center" style="font-size:18px;"><b>Datos Generales</b></div>
-                    <br>
-                    <table class="highlight">
-                        <thead>
-                        
-                        </thead>
+      <!-- SECCION IMAGENES MODELO -->
+      <section class="portfolio section" id="portfolio">
+        <div class="background-bg">
+          <div class="overlay overlay-sm">
+            <img
+                src="<?= $_SESSION['modelo']['fotoPerfil'] ?>"
+                class="shape half-circle1"
+                alt=""
+            />
+            <img
+              src="./img/shapes/half-circle.png"
+              class="shape half-circle2"
+              alt=""
+            />
+            <img src="./img/shapes/square.png" class="shape square" alt="" />
+            <img src="./img/shapes/wave.png" class="shape wave" alt="" />
+            <img src="./img/shapes/circle.png" class="shape circle" alt="" />
+            <img
+              src="./img/shapes/triangle.png"
+              class="shape triangle"
+              alt=""
+            />
+            <img src="./img/shapes/x.png" class="shape xshape" alt="" />
+          </div>
+        </div>
 
-                        <tbody>
-                            <tr>
-                                <td><strong><b>Pais</strong></b></td>
-                                <td>
-                                    <span style="font-weight:strong;color:orange;"><strong><?=$_SESSION['modelo']['pais']?></strong></span>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td><strong><b>Fecha Nacimiento</strong></b></td>
-                                <td>
-                                    <span style="font-weight:strong;color:orange;"><strong><?=$_SESSION['modelo']['fechaNacimiento']?></strong></span>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td><strong><b>Celular</strong></b></td>
-                                <td> <a href="https://wa.me" style="float:left">
-                                        <span style="font-family:Trebuchet MS;color: #009900;float: left;">
-                                            <strong><?=$_SESSION['modelo']['celular']?></strong>
-                                        </span>
-                                    </a>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td><strong><b>Email</strong></b></td>
-                                <td>
-                                    <span style="font-weight:strong;color:orange;"><strong><?=$_SESSION['modelo']['email']?></strong></span>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td><strong><b>Direccion</strong></b></td>
-                                <td>
-                                    <span style="font-weight:strong;color:orange;"><strong><?=$_SESSION['modelo']['direccion']?></strong></span>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td><strong><b>Altura</strong></b></td>
-                                <td>
-                                    <span style="font-weight:strong;color:orange;"><strong><?=$_SESSION['modelo']['altura']?> kg </strong></span>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td><strong><b>Peso</b></strong></td>
-                                <td>
-                                    <span style="font-weight:strong;color:orange;"><strong><?=$_SESSION['modelo']['peso']?> kg </strong> </span>
-                                </td>
-                            </tr>
-                        </tbody>
-                    </table>
+        <div class="container">
+          <div class="section-header">
+            <h3 class="title" data-title="albúm de fotos"></h3>
+          </div>
+
+          <div class="section-body">
+            <div class="grid">
+              <div class="grid-item logo-design">
+                <div class="gallery-image">
+                  <img src="<?= $_SESSION['modelo']['fotoPerfil'] ?>"/>
+                  <div class="img-overlay">
+                  </div>
                 </div>
-                <!-- ========== CONTENEDOR DATOS GENERALES ========== -->
+              </div>
+              <div class="grid-item webdev">
+                <div class="gallery-image">
+                <img src="<?= $_SESSION['modelo']['foto2'] ?>"/>
+                  <div class="img-overlay">
+                  </div>
+                </div>
+              </div>
+              <div class="grid-item ui webdev">
+                <div class="gallery-image">
+                  <img src="./img/portfolio/port3.png" alt="" />
+                  <div class="img-overlay">
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+    <!-- FIN SECCION PRESENTACION MODELO -->
+    
+    <!-- SECCION COMENTARIOS -->
+      <section class="testimonials section" id="testimonials">
+        <div class="container">
+          <div class="section-header">
+            <h3 class="title" data-title="Seccion de">COMENTARIOS</h3>
+          </div>
 
-                <!-- ========== CONTENEDOR INGRESAR COMENTARIOS ========== -->
-                <div class="col l6 m6 s12 grey lighten-3" style="padding: 30px; height: 480px; border-radius: 20px; "> 
-                    <div class="center" style="font-size:18px;"><b>Ingresar Comentario</b></div> <br>
-
-                    <div class="row">
-                        <form class="col s12" action="../controllers/ControlNuevoComentario.php" method="post">
-                            <div class="row">
-                                <div class="input-field" >
-                                    <i class="material-icons prefix">alternate_email</i>
-                                    <input id="email" type="email" name="email">
-                                    <label for="email">Email</label>
-                                </div>
-                                <div class="input-field" >
-                                    <i class="material-icons prefix">account_circle</i>
-                                    <input id="nombre" type="text" name="nombre">
-                                    <label for="nombre">Nombre</label>
-                                </div>
-                                <p class="clasificacion">
-                                    <input id="radio1" type="radio" name="estrellas" value="5"><!--
-                                    --><label for="radio1">★</label><!--
-                                    --><input id="radio2" type="radio" name="estrellas" value="4"><!--
-                                    --><label for="radio2">★</label><!--
-                                    --><input id="radio3" type="radio" name="estrellas" value="3"><!--
-                                    --><label for="radio3">★</label><!--
-                                    --><input id="radio4" type="radio" name="estrellas" value="2"><!--
-                                    --><label for="radio4">★</label><!--
-                                    --><input id="radio5" type="radio" name="estrellas" value="1"><!--
-                                    --><label for="radio5">★</label>
-                                </p>
-                                Ingresar Comentario
-                                <textarea name="message" onkeyup="countChars(this);"></textarea>
-                                    <p id="charNum" style="transform: translateY(-70%);" >0 characters</p> 
-                                    <button class="btn black ancho-100 center" 
-                                        style=" transform: translateX(25%) translateY(-50%);"
-                                      name="bt_comentar" value="<?=$_SESSION['modelo']["idModelo"]?>">Comentar</button>
-                            </div>
-                        </form>
-                        <p class="red-text center"  style="transform: translateY(-8%);">
-                            <?php
-                                if(isset($_SESSION['errorComentario'])){
-                                    echo $_SESSION['errorComentario'];
-                                    unset($_SESSION['errorComentario']);
-                                }
-                            ?>
-                        </p>
-                        <p class="green-text center" style="transform: translateY(-8%);">
-                            <?php
-                                if(isset($_SESSION['respComentario'])){
-                                    echo $_SESSION['respComentario'];
-                                    unset ($_SESSION['respComentario']);
-                                }
-                            ?>
-                        </p>
+          <div class="testi-content grid-2">
+            <div class="column-1 reviews">
+              <div class="swiper-container">
+                <div class="swiper-wrapper">
+                  <div class="swiper-slide review">
+                    <i class="fas fa-quote-left quote"></i>
+                    <div class="rate">
+                      <i class="fas fa-star"></i>
+                      <i class="fas fa-star"></i>
+                      <i class="fas fa-star"></i>
+                      <i class="fas fa-star"></i>
+                      <i class="fas fa-star"></i>
                     </div>
-                </div> 
-                <!-- ========== FIN CONTENEDOR INGRESAR COMENTARIOS ========== -->
-            </div>  
-        </div> 
 
-		
-        <!-- ========== CONTENEDOR MOSTRAR COMENTARIOS ========== -->                        
-        <div class="container blue-grey lighten-5" style="border-radius: 20px;"> 
-            <div class="row ">
-                <h4 class="center">Comentarios</h4>
-                <?php foreach ($_SESSION['comentario'] as $item){?>
-                    <div class="col s12 m12">
-                        <div class="card blue-grey darken-1" style="border-radius: 20px;">
-                            <div class="card-content white-text">
-                                <p>Nombre: <?=$item['nombre']?></p>
-                                <p>Email: <?=$item['email']?></p>
-                                <p><?=$item['fechaPublicacion']?></p>
-                                <p >
-                                    <?php if($item['puntaje']==5){?>
-                                        <p style="color: orange; font-size: 20px;">★★★★★</p>   
-                                    <?php } ?>
-                                    <?php if($item['puntaje']==4){?>
-                                        <p style="color: orange; font-size: 20px;">★★★★</p>   
-                                    <?php } ?>
-                                    <?php if($item['puntaje']==3){?>
-                                        <p style="color: orange; font-size: 20px;">★★★</p>   
-                                    <?php } ?>
-                                    <?php if($item['puntaje']==2){?>
-                                        <p style="color: orange; font-size: 20px;">★★</p>   
-                                    <?php } ?>
-                                    <?php if($item['puntaje']==1){?>
-                                        <p style="color: orange; font-size: 20px;">★</p>   
-                                    <?php } ?>
-                                    <?php if($item['puntaje']==NULL){?>
-                                        <p style="color: orange; font-size: 20px;"></p>   
-                                    <?php } ?>
-                            </div>
-                            <div class="card-action" style="border-radius: 20px;">
-                                <a ><?=$item['comentario']?></a>
-                            </div>
-                        </div>
-                    </div>   
-                <?php } ?> 
+                    <p class="review-text">
+                      Lorem, ipsum dolor sit amet consectetur adipisicing elit.
+                      Laudantium adipisci veniam debitis quas, sapiente
+                      repellendus mollitia. Laboriosam labore voluptate quos?
+                    </p>
+
+                    <div class="review-info">
+                      <h3 class="review-name">Matias Butt</h3>
+                      <h5 class="review-job">Photographer, Paris</h5>
+                    </div>
+                  </div>
+
+                  <div class="swiper-slide review">
+                    <i class="fas fa-quote-left quote"></i>
+                    <div class="rate">
+                      <i class="fas fa-star"></i>
+                      <i class="fas fa-star"></i>
+                      <i class="fas fa-star"></i>
+                      <i class="fas fa-star"></i>
+                      <i class="fas fa-star"></i>
+                    </div>
+
+                    <p class="review-text">
+                      Lorem ipsum dolor, sit amet consectetur adipisicing elit.
+                      Fugiat voluptate consequatur aut tenetur fugit error
+                      molestiae quaerat ex odio rem?
+                    </p>
+
+                    <div class="review-info">
+                      <h3 class="review-name">Romeo Herbert</h3>
+                      <h5 class="review-job">CEO, Munich</h5>
+                    </div>
+                  </div>
+
+                  <div class="swiper-slide review">
+                    <i class="fas fa-quote-left quote"></i>
+                    <div class="rate">
+                      <i class="fas fa-star"></i>
+                      <i class="fas fa-star"></i>
+                      <i class="fas fa-star"></i>
+                      <i class="fas fa-star"></i>
+                      <i class="fas fa-star"></i>
+                    </div>
+
+                    <p class="review-text">
+                      Lorem ipsum dolor sit amet consectetur adipisicing elit.
+                      Cupiditate voluptatum enim nemo quod amet dolorum aliquam,
+                      sapiente omnis eaque consectetur.
+                    </p>
+
+                    <div class="review-info">
+                      <h3 class="review-name">Jack Costa</h3>
+                      <h5 class="review-job">Director of THR, London</h5>
+                    </div>
+                  </div>
+
+                  <div class="swiper-slide review">
+                    <i class="fas fa-quote-left quote"></i>
+                    <div class="rate">
+                      <i class="fas fa-star"></i>
+                      <i class="fas fa-star"></i>
+                      <i class="fas fa-star"></i>
+                      <i class="fas fa-star"></i>
+                      <i class="fas fa-star"></i>
+                    </div>
+
+                    <p class="review-text">
+                      Lorem ipsum dolor sit amet consectetur, adipisicing elit.
+                      Perspiciatis ab incidunt, dicta quam inventore ipsum
+                      dolor. Consectetur nam incidunt error!
+                    </p>
+
+                    <div class="review-info">
+                      <h3 class="review-name">Reiss Mccartney</h3>
+                      <h5 class="review-job">Engineer, San Francisco</h5>
+                    </div>
+                  </div>
+                </div>
+
+                <div class="review-nav swiper-button-prev">
+                  <i class="fas fa-long-arrow-alt-left"></i>
+                </div>
+                <div class="review-nav swiper-button-next">
+                  <i class="fas fa-long-arrow-alt-right"></i>
+                </div>
+              </div>
             </div>
+          </div>
         </div>
-        <!-- ========== FIN CONTENEDOR MOSTRAR COMENTARIOS ========== --> 
+      </section>
+    <!-- FIN SECCION COMENTARIOS -->
+
+    <!-- SECCION DATOS PERSONALES Y CONTACTO MODELO -->
+      <section class="contact" id="contact">
+        <div class="container">
+          <div class="contact-box">
+            <div class="contact-info">
+              <h3 class="title">Información modelo</h3>
+              <div class="information-wrap">
+                <div class="information">
+                  <div class="contact-icon">
+                    <i class="fas fa-map-marker-alt"></i>
+                  </div>
+                  <p class="info-text"><?=$_SESSION['modelo']['pais']?></p>
+                </div>
+
+                <div class="information">
+                  <div class="contact-icon">
+                    <i class="fas fa-envelope"></i>
+                  </div>
+                  <p class="info-text"><?=$_SESSION['modelo']['email']?></p>
+                </div>
+
+                <div class="information">
+                  <div class="contact-icon">
+                    <i class="fas fa-phone-alt"></i>
+                  </div>
+                  <p class="info-text">&nbsp;<?=$_SESSION['modelo']['celular']?></p>
+                </div>
+
+                <div class="information">
+                  <div class="contact-icon">
+                    <i class="fas fa-walking"></i>
+                  </div>
+                  <p class="info-text">&nbsp;<?=$_SESSION['modelo']['altura']?> Cm.</p>
+                </div>
+
+                <div class="information">
+                  <div class="contact-icon">
+                    <i class="fas fa-weight"></i>
+                  </div>
+                  <p class="info-text">&nbsp;<?=$_SESSION['modelo']['peso']?> Kg.</p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+      <!-- SECCION DATOS PERSONALES Y CONTACTO MODELO -->
+    </main>
+
+    <footer class="footer">
+      <div class="container">
+        <div class="grid-4">
+          <div class="grid-4-col footer-about">
+            <h3 class="title-sm">Acerca de</h3>
+            <p class="text">
+              ¿Qué buscamos como empresa?
+            </p>
+            <p class="text">
+              Servicios
+            </p>
+            <p class="text">
+              Quienes somos
+            </p>
+            <p class="text">
+              Acerca de
+            </p>
+            <p class="text">
+              Contacto
+            </p>
+          </div>
+
+          <div class="grid-4-col footer-newstletter">
+            <h3 class="title-sm"></h3>
+            <p class="text">
+            </p>
+            <div class="footer-input-wrap">
+              <input type="email" class="footer-input" placeholder="Email" />
+              <a href="#" class="input-arrow">
+                <i class="fas fa-angle-right"></i>
+              </a>
+            </div>
+          </div>
+        </div>
+
+        <div class="bottom-footer">
+          <div class="copyright">
+            <p class="text">
+              <span></span>
+            </p>
+          </div>
+
+          <div class="followme-wrap">
+            <div class="followme">
+              <h3>Modelbook</h3>
+              <span class="footer-line"></span>
+              <div class="social-media">
+                <a href="#">
+                  <i class="fab fa-facebook-f"></i>
+                </a>
+                <a href="#">
+                  <i class="fab fa-twitter"></i>
+                </a>
+                <a href="#">
+                  <i class="fab fa-instagram"></i>
+                </a>
+              </div>
+            </div>
+
+            <div class="back-btn-wrap">
+              <a href="#" class="back-btn">
+                <i class="fas fa-chevron-up"></i>
+              </a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </footer>
 
     <?php 
         unset( $_SESSION['perfil']);
         unset($_SESSION['modelo']);
         }
-    ?>  
-
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-A3rJD856KowSb7dwlZdYEkO39Gagi7vIsF0jrRAoQmDKKtQBHUuLZ9AsSv4jD4Xa" crossorigin="anonymous"></script>
-    <script>
-        document.addEventListener('DOMContentLoaded', function() {
-            var elems = document.querySelectorAll('.sidenav');
-            var instances = M.Sidenav.init(elems);  
-        }); 
-    </script>
+    ?> 
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="../js/isotope.pkgd.min.js"></script>
+    <script src="https://unpkg.com/swiper/swiper-bundle.min.js"></script>
+    <script src="../js/app.js"></script>
     <script src="../js/contarCaracteres.js"></script>
     <script src="../js/materialbox.js"></script>
-
-</body>
+  </body>
 </html>

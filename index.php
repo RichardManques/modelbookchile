@@ -12,7 +12,6 @@
     session_start();
 
 ?>
-
 <!doctype html>
 <html lang="en">
   <head>
@@ -23,14 +22,15 @@
     <link rel="icon" type="image/svg" href="./img/prueba1.png">
     <!-- Bootstrap CSS -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-gH2yIJqKdNHPEq0n4Mqa/HGKIhSkIHeL5AyhkYV8i59U5AR6csBvApHHNl/vI1Bx" crossorigin="anonymous">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300&display=swap" rel="stylesheet">
     <title>Bienvenido</title>
   </head>
-  <body>
+  <body class="font">
     <!--BARRA DE NAVEGACIÓN-->
-    <nav class="navbar navbar-expand-lg" style="background:#3F267B;">
+    <nav class="navbar navbar-expand-lg">
         <div class="container-fluid">
         <a class="navbar-brand" href="./index.php">
-            <img src="./img/prueba1.png">
+            <img src="./img/modelbook.png">
         </a>
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
@@ -39,16 +39,13 @@
             <div class="collapse navbar-collapse" id="navbarNav">
             <ul class="navbar-nav">
                 <li class="nav-item">
-                    <a class="nav-link active" aria-current="page" href="./index.php">Inicio</a>
+                    <a class="nav-link active" aria-current="page" href="./index.php"><i class="fa-sharp fa-solid fa-house"></i> Inicio</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="./views/buscador.php">Buscar</a>
+                    <a class="nav-link" href="./views/buscador.php"><i class="fa-solid fa-magnifying-glass"></i> Buscar</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="./views/recomendaciones.php">Recomendaciones</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="./views/login.php">Iniciar sesión</a>
+                    <a class="nav-link" href="./views/login.php"><i class="fa-solid fa-user"></i> Login</a>
                 </li>
             </ul>
             </div>
@@ -82,7 +79,7 @@
         </div>
     </div>
     <!---INICIO CARD MODELO-->
-
+    <script src="https://kit.fontawesome.com/9470b4a918.js" crossorigin="anonymous"></script>
     <!-- Optional JavaScript; choose one of the two! -->
 
     <!-- Option 1: Bootstrap Bundle with Popper -->

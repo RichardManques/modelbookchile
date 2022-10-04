@@ -1,12 +1,18 @@
+@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@200;300;400;500;600;700;800&display=swap");
+  .font{
+    font-family: "Poppins", sans-serif;
+  }
+  
   .navbar .nav-link{
-    color:rgb(255, 255, 255);
-    font-weight: bold;
+    color:purple;
+    font-family: "Poppins", sans-serif;
   }
   
   .boton{
     display: flex;
     align-items: center;
     justify-content: center;
+    font-family: "Poppins", sans-serif;
   }
   .collapse{
     justify-content: end;
