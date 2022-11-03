@@ -18,7 +18,7 @@ ini_set('display_errors', 1);
       rel="stylesheet"
       href="https://unpkg.com/swiper/swiper-bundle.min.css"
     />
-    <link rel="stylesheet" href="../css/perfilmodelo.css" />
+    <link rel="stylesheet" href="../css/perfilmodelo.css"/>
   </head>
   <body>
     <main>
@@ -53,25 +53,13 @@ ini_set('display_errors', 1);
             <div class="links">
               <ul>
                 <li>
-                  <a href="#header">Home</a>
+                  <a href="../index.php">Inicio</a>
                 </li>
                 <li>
-                  <a href="#services">Services</a>
+                  <a href="../views/buscador.php">Buscar</a>
                 </li>
                 <li>
-                  <a href="#portfolio">Portfolio</a>
-                </li>
-                <li>
-                  <a href="#about">About</a>
-                </li>
-                <li>
-                  <a href="#testimonials">Testimonials</a>
-                </li>
-                <li>
-                  <a href="#contact">Contact</a>
-                </li>
-                <li>
-                  <a href="#hireme" class="active">Hire me</a>
+                  <a href="../views/login.php">Login</a>
                 </li>
               </ul>
             </div>
