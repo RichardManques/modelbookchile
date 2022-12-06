@@ -7,7 +7,7 @@ ini_set('display_errors', 1);
     use models\ModeloModel as ModeloModel;
     require_once("../models/ModeloModel.php");
     $model = new ModeloModel();
-    $modelos = $model->getAllModelos();
+    $comentarios = $model->getAllComentarios();
     session_start();
 ?>
 <!DOCTYPE html>
@@ -29,15 +29,16 @@ ini_set('display_errors', 1);
     <div class="collapse navbar-collapse" id="navbarSupportedContent">
       <ul class="navbar-nav me-auto mb-2 mb-lg-0">
         <li class="nav-item">
-          <a class="nav-link active" aria-current="page" href="#">Inicio</a>
+          <a class="nav-link" aria-current="page" href="./pageAdmin.php">Inicio</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" href="./seccionComentarios.php">Sección comentarios</a>
+          <a class="nav-link active" href="./seccionComentarios.php">Sección comentarios</a>
         </li>
       </ul>
-      <a href="../views/salir.php">
+        <a href="../views/salir.php">
       <button class="btn btn-outline-success" type="submit">Cerrar sesión</button>
       </a>
+
     </div>
   </div>
 </nav>
@@ -46,49 +47,66 @@ ini_set('display_errors', 1);
 <br>
 <div class="container">   
 <h4 class="text-center">Supervisión de modelos</h4>
-<form action="../controllers/ControlListaModelos.php" method="post">
+<form action="../controllers/ControlListaComentarios.php" method="post">
 <table class="table">
   <thead class="table-dark">
     <tr>
       <th scope="col">#</th>
-      <th scope="col">Nombre</th>
-      <th scope="col">Apellido</th>
+      <th scope="col">Puntaje</th>
       <th scope="col">Correo</th>
-      <th scope="col">Fecha Nac</th>
-      <th scope="col">Registro</th>
+      <th scope="col">Nombre</th>
+      <th scope="col">Comentario</th>
       <th scope="col">Estado</th>
+      <th scope="col">Id Modelo</th>
       <th scope="col">Acciones</th>
     </tr>
-    <?php foreach ($modelos as $item) {  ?>
+    <?php foreach ($comentarios as $item) {  ?>
   </thead>
   <tbody>
+    <?php if($item["estado"]==0) { ?>
     <tr>
-      <th scope="row"><?=$item["idModelo"]?></th>
-      <td><?=$item["nombre"]?></td>
-      <td><?=$item["apellido"]?></td>
+      <th scope="row"><?=$item["idComentario"]?></th>
+      <td><?=$item["puntaje"]?></td>
       <td><?=$item["email"]?></td>
-      <td><?=$item["fechaNacimiento"]?></td>
-      <td><?=$item["fechaRegistro"]?></td>
+      <td><?=$item["nombre"]?></td>
+      <td><?=$item["comentario"]?></td>
       <td>
         <?php if($item["estado"]==0) {?>
-            <p class="text-danger">
+            <p>
                 Inactivo
             </p>
         <?php }else { ?>
-            <p class="text-success">
+            <p>
                 Activo
             </p>
             <?php } ?>
       </td>
-
+      <td><?=$item["fechaPublicacion"]?></td>
+      <td><?=$item["idModelo"]?></td>
+      <?php } else {?>
+        <tr>
+            <td><?=$item["idComentario"]?></td>
+            <td><?=$item["puntaje"]?></td>
+            <td><?=$item["email"]?></td>
+            <td><?=$item["nombre"]?></td>
+            <td><?=$item["comentario"]?></td>
+            <td>
+            <?php if($item["estado"]==0){?>
+                <p>
+                    Por validar
+                </p>    
+            <?php }else { ?>
+                <p>
+                    Validado
+                </p>
+                <?php } ?>
+            </td>
+                <td><?=$item["fechaPublicacion"]?></td>
+                <td><?=$item["idModelo"]?></td>
+        <?php } ?> 
       <td>
-        <button type="button" class="btn btn-primary" value="<?=$item["idModelo"]?>" name="bt_edit">
-          <i class="fa-solid fa-pencil"></i>
-        </button>
-
-        <button type="button" class="btn btn-danger" value="<?=$item["idModelo"]?>" name="bt_delete">
-          <i class="fa-solid fa-trash"></i>
-        </button>
+        <button>borrar</button>
+        <button>editar</button>
       </td>
       <?php } ?>
     </tr>
@@ -97,7 +115,7 @@ ini_set('display_errors', 1);
 </form>
 </div>
 <!-- FIN INICIO TABLA ACEPTAR ADMINISTRADOR -->
-<script src="https://kit.fontawesome.com/9470b4a918.js" crossorigin="anonymous"></script>
+
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-kenU1KFdBIe4zVF0s0G1M5b4hcpxyD9F7jL+jjXkk+Q2h455rYXK/7HAuoJl+0I4" crossorigin="anonymous"></script>
 </body>
 </html>

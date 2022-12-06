@@ -4,7 +4,7 @@ ini_set('display_errors', 1);
     error_reporting(E_ALL); 
     // OBTENER PAISES PARA EL COMBOBOX
     use models\ModeloModel as ModeloModel;
-    require_once("../models/ModeloModel.php");
+    require_once("./models/ModeloModel.php");
     $model = new ModeloModel();
     $paises = $model->getPais();
     session_start();
@@ -35,9 +35,6 @@ ini_set('display_errors', 1);
           <a class="nav-link active" aria-current="page" href="#">Inicio</a>
         </li>
       </ul>
-      <a href="../views/salir.php">
-      <button class="btn btn-outline-success" type="submit">Cerrar sesión</button>
-      </a>
     </div>
   </div>
 </nav>
@@ -113,19 +110,11 @@ ini_set('display_errors', 1);
             <input type="file" class="form-control" id="inputGroupFile01" name="foto4" accept="image/*">
         </div>
         </div>
-    </div>
-    <div class="row">
-        <div class="col">
-            <div class="form-floating">
-                <textarea class="form-control" placeholder="Leave a comment here" id="floatingTextarea2" style="height: 100px"></textarea>
-                <label for="floatingTextarea2">Descripcion del modelo</label>
-            </div>
-        </div>
-    </div>
-    <div class="col-md-6 offset-md-6">
-            <br>
+        <div class="col-md-6 offset-md-6">
             <button type="button" class="btn btn-success btn-lg">Registrar</button>
         </div> 
+    </div>
+
     <p class="red-text">
         <?php
             if(isset($_SESSION['errorCrearModelo'])){

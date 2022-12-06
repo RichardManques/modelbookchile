@@ -71,7 +71,7 @@ ini_set('display_errors', 1);
         </nav>
       </header>
       <!-- SECCION PRESENTACION MODELO -->
-      <?php if(isset($_SESSION['perfil'])) { ?>
+      
       <section class="about section" id="about">
         <div class="container">
           <div class="section-header">
@@ -82,7 +82,7 @@ ini_set('display_errors', 1);
             <div class="column-1">
               <h3 class="title-sm">Acerca de mi</h3>
               <p class="text">
-                Lorem ipsum dolor, sit amet consectetur adipisicing elit. Ab modi, error minima ducimus aliquam tenetur consequatur molestias magnam consequuntur suscipit iste fugiat vero repellat officia nesciunt reiciendis ad vel possimus?
+              <?=$_SESSION['modelo']['descripcion']?>
               </p>
             </div>
 
@@ -166,72 +166,6 @@ ini_set('display_errors', 1);
             <div class="column-1 reviews">
               <div class="swiper-container">
                 <div class="swiper-wrapper">
-                  <div class="swiper-slide review">
-                    <i class="fas fa-quote-left quote"></i>
-                    <div class="rate">
-                      <i class="fas fa-star"></i>
-                      <i class="fas fa-star"></i>
-                      <i class="fas fa-star"></i>
-                      <i class="fas fa-star"></i>
-                      <i class="fas fa-star"></i>
-                    </div>
-
-                    <p class="review-text">
-                      Lorem, ipsum dolor sit amet consectetur adipisicing elit.
-                      Laudantium adipisci veniam debitis quas, sapiente
-                      repellendus mollitia. Laboriosam labore voluptate quos?
-                    </p>
-
-                    <div class="review-info">
-                      <h3 class="review-name">Matias Butt</h3>
-                      <h5 class="review-job">Photographer, Paris</h5>
-                    </div>
-                  </div>
-
-                  <div class="swiper-slide review">
-                    <i class="fas fa-quote-left quote"></i>
-                    <div class="rate">
-                      <i class="fas fa-star"></i>
-                      <i class="fas fa-star"></i>
-                      <i class="fas fa-star"></i>
-                      <i class="fas fa-star"></i>
-                      <i class="fas fa-star"></i>
-                    </div>
-
-                    <p class="review-text">
-                      Lorem ipsum dolor, sit amet consectetur adipisicing elit.
-                      Fugiat voluptate consequatur aut tenetur fugit error
-                      molestiae quaerat ex odio rem?
-                    </p>
-
-                    <div class="review-info">
-                      <h3 class="review-name">Romeo Herbert</h3>
-                      <h5 class="review-job">CEO, Munich</h5>
-                    </div>
-                  </div>
-
-                  <div class="swiper-slide review">
-                    <i class="fas fa-quote-left quote"></i>
-                    <div class="rate">
-                      <i class="fas fa-star"></i>
-                      <i class="fas fa-star"></i>
-                      <i class="fas fa-star"></i>
-                      <i class="fas fa-star"></i>
-                      <i class="fas fa-star"></i>
-                    </div>
-
-                    <p class="review-text">
-                      Lorem ipsum dolor sit amet consectetur adipisicing elit.
-                      Cupiditate voluptatum enim nemo quod amet dolorum aliquam,
-                      sapiente omnis eaque consectetur.
-                    </p>
-
-                    <div class="review-info">
-                      <h3 class="review-name">Jack Costa</h3>
-                      <h5 class="review-job">Director of THR, London</h5>
-                    </div>
-                  </div>
-
                   <div class="swiper-slide review">
                     <i class="fas fa-quote-left quote"></i>
                     <div class="rate">
@@ -385,12 +319,6 @@ ini_set('display_errors', 1);
         </div>
       </div>
     </footer>
-
-    <?php 
-        unset( $_SESSION['perfil']);
-        unset($_SESSION['modelo']);
-        }
-    ?> 
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     <script src="../js/isotope.pkgd.min.js"></script>
     <script src="https://unpkg.com/swiper/swiper-bundle.min.js"></script>

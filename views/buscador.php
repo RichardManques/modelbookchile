@@ -15,109 +15,164 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="../css/modelcard.css">
-    <link rel="icon" type="image/svg" href="../img/prueba1.png">
-    <!-- Bootstrap CSS -->
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-gH2yIJqKdNHPEq0n4Mqa/HGKIhSkIHeL5AyhkYV8i59U5AR6csBvApHHNl/vI1Bx" crossorigin="anonymous">
-    <title>Buscador</title>
+<meta charset="utf-8">
+    <title>Inicio</title>
+    <meta content="width=device-width, initial-scale=1.0" name="viewport">
+    <meta content="" name="keywords">
+    <meta content="" name="description">
+
+    <!-- Favicon -->
+    <link href="img/favicon.ico" rel="icon">
+
+    <!-- Google Web Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Heebo:wght@400;500;600&family=Inter:wght@700;800&display=swap" rel="stylesheet"> 
+
+    <!-- Icon Font Stylesheet -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.10.0/css/all.min.css" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.4.1/font/bootstrap-icons.css" rel="stylesheet">
+
+    <!-- Libraries Stylesheet -->
+    <link href="../lib/animate/animate.min.css" rel="stylesheet">
+    <link href="../lib/owlcarousel/assets/owl.carousel.min.css" rel="stylesheet">
+
+    <!-- Customized Bootstrap Stylesheet -->
+    <link href="../css/bootstrap.min.css" rel="stylesheet">
+
+    <!-- Template Stylesheet -->
+    <link href="../css/index/cardmodelos.css" rel="stylesheet">
 </head>
 <body>
-    <!--BARRA DE NAVEGACIÓN-->
-    <nav class="navbar navbar-expand-lg">
-        <div class="container-fluid">
-        <a class="navbar-brand" href="./index.php">
-            <img src="../img/modelbook.png">
-        </a>
-            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-            <span class="navbar-toggler-icon"></span>
-            </button>
-
-            <div class="collapse navbar-collapse" id="navbarNav">
-            <ul class="navbar-nav">
-                <li class="nav-item">
-                    <a class="nav-link" aria-current="page" href="../index.php"><i class="fa-sharp fa-solid fa-house"></i> Inicio</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link active" href="./views/buscador.php"><i class="fa-solid fa-magnifying-glass"></i> Buscar</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="../views/login.php"><i class="fa-solid fa-user"></i> Login</a>
-                </li>
-            </ul>
+<div class="container-xxl bg-white p-0">
+        <!-- Spinner Start -->
+        <div id="spinner" class="show bg-white position-fixed translate-middle w-100 vh-100 top-50 start-50 d-flex align-items-center justify-content-center">
+            <div class="spinner-border text-primary" style="width: 3rem; height: 3rem;" role="status">
+                <span class="sr-only">Loading...</span>
             </div>
         </div>
-    </nav>
+        <!-- Spinner End -->
 
-    
-    <!-- ========== BUSCADOR POR PAIS ========== -->
-    <div class="container center" >
-        <div class="row center">
-            <div class="col l2 m4 s12" style=" margin: 20px;"></div>
-            <div class="col l6 m6 s12 grey lighten-2" style=" margin: 20px;">
-                <h4 class="center">Buscador por país</h4>
-                <form action="../controllers/ControlBuscarPais.php" method="post">
-                    <div class="input-field">
-                        <select class="form-select" name="Pais_idPais">
-                            <option disabled>Seleccionar país</option>
-                            <?php foreach ($paises as $paises){?>
-                                <option value=<?=$paises['idPais']?> data-icon="<?=$paises['bandera']?>"> <?=$paises['nombre']?></option>
-                            <?php } ?>
-                        </select>     
-                    </div>        
-                    <button class="btn btn-primary btn-lg">Buscar</button>
-                </form>
-                <p class="red-text">
-                    <?php
-                        if(isset($_SESSION['errorBuscador'])){
-                            echo $_SESSION['errorBuscador'];
-                            unset($_SESSION['errorBuscador']);
-                        }
-                    ?>
-                </p>
-            </div>                 
-        </div>               
-    </div>
-    <!-- ========== BUSCADOR POR PAIS ========== -->
+        <!-- Navbar & Hero Start -->
+        <div class="container-xxl position-relative p-0">
+            <nav class="navbar navbar-expand-lg navbar-light px-4 px-lg-5 py-3 py-lg-0">
+                <a href="../index.php" class="navbar-brand p-0">
+                    <h1 class="m-0">Modelbook</h1>
+                    <!-- <img src="img/logo.png" alt="Logo"> -->
+                </a>
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse">
+                    <span class="fa fa-bars"></span>
+                </button>
+                <div class="collapse navbar-collapse" id="navbarCollapse">
+                    <div class="navbar-nav ms-auto py-0">
+                        <a href="../index.php" class="nav-item nav-link active">Inicio</a>
+                        <a href="../views/buscador.php" class="nav-item nav-link">Buscar</a>
+                    </div>
+                    <a href="./login.php" class="btn btn-light rounded-pill text-primary py-2 px-4 ms-lg-5">Iniciar sesión</a>
+                </div>
+            </nav>
+        </div>
+        <!-- Navbar & Hero End -->
 
-    <!-- ========== CARDS MODELOS ========== -->   
-    
-    <div class="container">
-        <div class="row">
-            <?php if(isset($_SESSION['buscar'])) { ?>
-                <?php foreach ($_SESSION['modelo'] as $item){?>
-                    <div class="col-12 col-md-3 col-md-3">
-                        <div class="card">
-                            <img src="<?=$item['fotoPerfil']?>">
-                            <div class="card-body">
-                                <p class="text-center">
-                                    <span><?=$item['nombre']?></span> <span><?=$item['apellido']?></span>
-                                </p>
-                            </div>
-                            <div class="boton">
-                            <form action="../controllers/ControlPerfilModelo.php" method="post">
-                                <button class="btn btn-outline-primary" name="bt_perfil" value="<?=$modelos["idModelo"]?>">
-                                    Ver perfil
-                                </button>
-                                </form>
+        <!-- Team Start -->
+        <div class="container-xxl py-6">
+            <div class="container">
+                <div class="mx-auto text-center wow fadeInUp" data-wow-delay="0.1s" style="max-width: 600px;">
+                    <h2 class="mb-5">Buscar modelos</h2>
+                </div>
+                <div class="row">
+                    <div class="col">
+                    <select class="form-select" aria-label="Default select example">
+                        <option selected>Selecciona un pais</option>
+                        <option value="1">One</option>
+                        <option value="2">Two</option>
+                        <option value="3">Three</option>
+                    </select>
+                    </div>
+                    <div class="col">
+                        <button type="button" class="btn btn-success">Buscar</button>
+                    </div>
+                </div>
+                
+                <div class="row g-4">
+                <?php foreach ($model as $modelos){?>
+                    <div class="col-lg-3 col-md-6 wow fadeInUp" data-wow-delay="0.1s">
+                        <div class="team-item">
+                            <h5><?=$modelos['nombre']?> <?=$modelos['apellido']?></h5>
+                            <img class="img-fluid rounded-circle w-100 mb-4" src="<?=$modelos['fotoPerfil']?>">
+                            <div class="d-flex justify-content-center">
+                                <a class="btn btn-square text-primary bg-white m-1" href=""><i class="fab fa-facebook-f"></i></a>
+                                <a class="btn btn-square text-primary bg-white m-1" href=""><i class="fab fa-twitter"></i></a>
+                                <a class="btn btn-square text-primary bg-white m-1" href=""><i class="fab fa-linkedin-in"></i></a>
                             </div>
                         </div>
                     </div>
-                <?php } ?> 
-        <?php 
-            unset( $_SESSION['buscar']);
-            }
-        ?>
+                    <?php } ?>
+                </div>
+            </div>
         </div>
+        <!-- Team End -->
+
+        <!-- Footer Start -->
+        <div class="container-fluid bg-dark text-light footer pt-5 wow fadeIn" data-wow-delay="0.1s" style="margin-top: 6rem;">
+            <div class="container py-5">
+                <div class="row g-5">
+                    <div class="col-md-6 col-lg-3">
+                        <h5 class="text-white mb-4">Get In Touch</h5>
+                        <p><i class="fa fa-map-marker-alt me-3"></i>123 Street, New York, USA</p>
+                        <p><i class="fa fa-phone-alt me-3"></i>+012 345 67890</p>
+                        <p><i class="fa fa-envelope me-3"></i>info@example.com</p>
+                        <div class="d-flex pt-2">
+                            <a class="btn btn-outline-light btn-social" href=""><i class="fab fa-twitter"></i></a>
+                            <a class="btn btn-outline-light btn-social" href=""><i class="fab fa-facebook-f"></i></a>
+                            <a class="btn btn-outline-light btn-social" href=""><i class="fab fa-youtube"></i></a>
+                            <a class="btn btn-outline-light btn-social" href=""><i class="fab fa-instagram"></i></a>
+                            <a class="btn btn-outline-light btn-social" href=""><i class="fab fa-linkedin-in"></i></a>
+                        </div>
+                    </div>
+                    <div class="col-md-6 col-lg-3">
+                        <h5 class="text-white mb-4">Quick Link</h5>
+                        <a class="btn btn-link" href="">About Us</a>
+                        <a class="btn btn-link" href="">Contact Us</a>
+                        <a class="btn btn-link" href="">Privacy Policy</a>
+                        <a class="btn btn-link" href="">Terms & Condition</a>
+                        <a class="btn btn-link" href="">Career</a>
+                    </div>
+                    <div class="col-md-6 col-lg-3">
+                        <h5 class="text-white mb-4">Popular Link</h5>
+                        <a class="btn btn-link" href="">About Us</a>
+                        <a class="btn btn-link" href="">Contact Us</a>
+                        <a class="btn btn-link" href="">Privacy Policy</a>
+                        <a class="btn btn-link" href="">Terms & Condition</a>
+                        <a class="btn btn-link" href="">Career</a>
+                    </div>
+                    <div class="col-md-6 col-lg-3">
+                        <h5 class="text-white mb-4">Newsletter</h5>
+                        <p>Lorem ipsum dolor sit amet elit. Phasellus nec pretium mi. Curabitur facilisis ornare velit non vulpu</p>
+                        <div class="position-relative w-100 mt-3">
+                            <input class="form-control border-0 rounded-pill w-100 ps-4 pe-5" type="text" placeholder="Your Email" style="height: 48px;">
+                            <button type="button" class="btn shadow-none position-absolute top-0 end-0 mt-1 me-2"><i class="fa fa-paper-plane text-primary fs-4"></i></button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- Footer End -->
+
+
+        <!-- Back to Top -->
+        <a href="#" class="btn btn-lg btn-primary btn-lg-square back-to-top"><i class="bi bi-arrow-up"></i></a>
     </div>
 
-	<!-- ========== CARDS MODELOS ========== --> 
+    <!-- JavaScript Libraries -->
+    <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="../lib/wow/wow.min.js"></script>
+    <script src="../lib/easing/easing.min.js"></script>
+    <script src="../lib/waypoints/waypoints.min.js"></script>
+    <script src="../lib/owlcarousel/owl.carousel.min.js"></script>
 
-<script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
-      
-<script src="https://cdn.jsdelivr.net/npm/vue@2"></script>
-<script src="../js/buscarPais.js"></script>
-<script src="https://kit.fontawesome.com/9470b4a918.js" crossorigin="anonymous"></script>
+    <!-- Template Javascript -->
+    <script src="../js/inicio/inicio.js"></script>
 </body>
 </html>
