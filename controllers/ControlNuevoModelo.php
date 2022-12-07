@@ -19,6 +19,7 @@ class ControlNuevoModelo{
     public $fechaRegistro;
     public $Usuario_rut;
     public $Pais_idPais;
+    public $descripcion;
 
     public function __construct()
     {
@@ -30,6 +31,7 @@ class ControlNuevoModelo{
         $this->altura = $_POST['altura'];
         $this->peso = $_POST['peso'];
         $this->Pais_idPais = $_POST['Pais_idPais'];
+        $this->descripcion = $_POST['descripcion'];
 
     }
 
@@ -107,7 +109,7 @@ class ControlNuevoModelo{
             }
 
             if($this->nombre=="" || $this->apellido=="" || $this->fechaNacimiento=="" || $this->celular==""
-                || $this->direccion=="" || $this->altura=="" || $this->peso=="" || $this->Pais_idPais==""){
+                || $this->direccion=="" || $this->altura=="" || $this->peso=="" || $this->Pais_idPais=="" || $this->descripcion==""){
                 $_SESSION['errorCrearModelo']="Complete todos los campos";
                 header("Location:../views/crearModelo.php");
                 return;
@@ -129,6 +131,7 @@ class ControlNuevoModelo{
                     "foto3"=>$foto3,
                     "foto4"=>$foto4,
                     "Usuario_rut"=>$this->Usuario_rut,
+                    "descripcion"=>$this->descripcion,
                     "Pais_idPais"=>$this->Pais_idPais];
 
             $count = $model->nuevoModelo($data);
@@ -137,6 +140,7 @@ class ControlNuevoModelo{
                 header("Location:../index.php");
             }else{
                 $_SESSION["errorCrearModelo"] = "Hubo un error a nivel de BD";
+                header("Location:../views/crearModelo.php");
                 return;
             }
         } else {

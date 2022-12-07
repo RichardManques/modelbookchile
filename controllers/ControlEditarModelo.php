@@ -15,7 +15,7 @@ class ControlEditarModelo{
     public function __construct(){
         $this->idModelo = $_POST["idModelo"];
         $this->nombre = $_POST["nombre"];
-        $this->nombre = $_POST["apellido"];
+        $this->apellido = $_POST["apellido"];
         $this->estado = $_POST["estado"];
     }
 
@@ -31,7 +31,7 @@ class ControlEditarModelo{
         } else {
             $_SESSION["errorEstado"] = "Error en la BD";
         }
-        header("Location: ../views/pageAdmin.php");
+        header("Location:../views/pageAdmin.php");
     }
 }
 

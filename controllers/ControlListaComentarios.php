@@ -22,11 +22,11 @@ class ControlListaModelos{
             $model = new ModeloModel();
             $modelo = $model->buscarComentario($this->bt_editComentario);
             $_SESSION["comentarioEdit"] = $modelo[0]; 
-            header("Location: ../views/pageAdmin.php");
+            header("Location:../views/seccionComentarios.php");
         } else{
             $model = new ModeloModel();
             $modelo = $model->eliminarComentario($this->bt_deleteComentario);
-            header("Location: ../views/pageAdmin.php");
+            header("Location:../views/seccionComentarios.php");
         }
           
     }        

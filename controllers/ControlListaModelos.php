@@ -21,7 +21,7 @@ class ControlListaModelos{
             $_SESSION["editar"] = "ON";
             $model = new ModeloModel();
             $modelo = $model->buscarModelo($this->bt_edit);
-            $_SESSION["modelo"] = $modelo[0]; 
+            $_SESSION["modelo"] = $modelo[0];
             header("Location: ../views/pageAdmin.php");
         } else{
             $model = new ModeloModel();

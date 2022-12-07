@@ -74,25 +74,39 @@
         <!-- Navbar & Hero End -->
 
         <!-- Team Start -->
+
         <div class="container-xxl py-6">
             <div class="container">
                 <div class="mx-auto text-center wow fadeInUp" data-wow-delay="0.1s" style="max-width: 600px;">
                     <h2 class="mb-5">Modelos</h2>
                 </div>
+                <form action="./controllers/ControlPerfilModelo.php" method="POST">
                 <div class="row g-4">
+
                 <?php foreach ($modelos as $modelos){?>
                     <div class="col-lg-3 col-md-6 wow fadeInUp" data-wow-delay="0.1s">
                         <div class="team-item">
                             <h5><?=$modelos['nombre']?> <?=$modelos['apellido']?></h5>
-                            <img class="img-fluid rounded-circle" src="<?=$modelos['fotoPerfil']?>">
+                            <img class="img-fluid rounded-circle" src="<?=$modelos['fotoPerfil']?>" height="400px" width="400px">
+                            
                             <div class="d-flex justify-content-center">
                                 <a class="btn btn-square text-primary bg-white m-1" href=""><i class="fab fa-facebook-f"></i></a>
                                 <a class="btn btn-square text-primary bg-white m-1" href=""><i class="fab fa-twitter"></i></a>
                                 <a class="btn btn-square text-primary bg-white m-1" href=""><i class="fab fa-linkedin-in"></i></a>
                             </div>
+                            <br>
+                            <div class="row">
+                                <div class="col">
+                                    <button class="btn btn-success" name="bt_perfil" value="<?=$modelos["idModelo"]?>">
+                                        <a>Ver perfil</a>
+                                    </button>
+                                </div>
+                            </div>
                         </div>
                     </div>
                     <?php } ?>
+
+                </form>
                 </div>
             </div>
         </div>

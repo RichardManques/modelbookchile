@@ -54,7 +54,15 @@ class UsuarioModel{
         $stm->bindParam(":A",$rut); 
         return $stm->execute();
     }
-
+    
+    //PARA LA AGENCIA
+    public function iniciarSesionAgencia($email,$password){
+        $stm = Conexion::conector()->prepare("SELECT * FROM usuario WHERE email=:A AND password=:B AND rol='agencia'");
+        $stm->bindParam(":A",$email);
+        $stm->bindParam(":B",md5($password));
+        $stm->execute();
+        return $stm->fetchAll(\PDO::FETCH_ASSOC);
+    }
 
 
 }
