@@ -1,33 +1,35 @@
 <?php
-    ini_set('display_errors', 1);
-    ini_set('display_startup_errors', 1);
-    error_reporting(E_ALL); 
+ini_set('display_errors', 1);
+ini_set('display_startup_errors', 1);
+error_reporting(E_ALL);
 
-    // OBTENER PAISES PARA EL COMBOBOX
-    use models\ModeloModel as ModeloModel;
-    require_once("../models/ModeloModel.php");
-    $model = new ModeloModel();
-    $paises = $model->getPais();
-    
-    session_start();
+// OBTENER PAISES PARA EL COMBOBOX
+use models\ModeloModel as ModeloModel;
+
+require_once("../models/ModeloModel.php");
+$model = new ModeloModel();
+$paises = $model->getPais();
+
+session_start();
 
 ?>
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
-<meta charset="utf-8">
-    <title>Inicio</title>
+    <meta charset="utf-8">
+    <title>Buscar modelos</title>
     <meta content="width=device-width, initial-scale=1.0" name="viewport">
     <meta content="" name="keywords">
     <meta content="" name="description">
 
     <!-- Favicon -->
-    <link href="img/favicon.ico" rel="icon">
+    <link href="../img/logo.png" rel="icon">
 
     <!-- Google Web Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Heebo:wght@400;500;600&family=Inter:wght@700;800&display=swap" rel="stylesheet"> 
+    <link href="https://fonts.googleapis.com/css2?family=Heebo:wght@400;500;600&family=Inter:wght@700;800&display=swap" rel="stylesheet">
 
     <!-- Icon Font Stylesheet -->
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.10.0/css/all.min.css" rel="stylesheet">
@@ -35,24 +37,25 @@
 
     <!-- Libraries Stylesheet -->
     <link href="../lib/animate/animate.min.css" rel="stylesheet">
+    <link href="../css/datatable.css" rel="stylesheet">
     <link href="../lib/owlcarousel/assets/owl.carousel.min.css" rel="stylesheet">
+    <link href="../css/index/cardmodelos.css" rel="stylesheet">
+
 
     <!-- Customized Bootstrap Stylesheet -->
-    <link href="../css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-rbsA2VBKQhggwzxH7pPCaAqO46MgnOM80zW1RWuH61DGLwZJEdK2Kadq2F9CUG65" crossorigin="anonymous">
 
     <!-- Template Stylesheet -->
-    <link href="../css/index/cardmodelos.css" rel="stylesheet">
 </head>
+
 <body>
-<div class="container-xxl bg-white p-0">
-        <!-- Spinner Start -->
+    <div class="container-xxl bg-white p-0">
+        <!-- Spinner End -->
         <div id="spinner" class="show bg-white position-fixed translate-middle w-100 vh-100 top-50 start-50 d-flex align-items-center justify-content-center">
             <div class="spinner-border text-primary" style="width: 3rem; height: 3rem;" role="status">
                 <span class="sr-only">Loading...</span>
             </div>
         </div>
-        <!-- Spinner End -->
-
         <!-- Navbar & Hero Start -->
         <div class="container-xxl position-relative p-0">
             <nav class="navbar navbar-expand-lg navbar-light px-4 px-lg-5 py-3 py-lg-0">
@@ -68,51 +71,43 @@
                         <a href="../index.php" class="nav-item nav-link active">Inicio</a>
                         <a href="../views/buscador.php" class="nav-item nav-link">Buscar</a>
                     </div>
-                    <a href="./login.php" class="btn btn-light rounded-pill text-primary py-2 px-4 ms-lg-5">Iniciar sesión</a>
+                    <a href="../views/login.php" class="btn btn-light rounded-pill text-primary py-2 px-4 ms-lg-5">Iniciar sesión</a>
                 </div>
             </nav>
         </div>
         <!-- Navbar & Hero End -->
-
-        <!-- Team Start -->
-        <div class="container-xxl py-6">
-            <div class="container">
-                <div class="mx-auto text-center wow fadeInUp" data-wow-delay="0.1s" style="max-width: 600px;">
-                    <h2 class="mb-5">Buscar modelos</h2>
-                </div>
-                <div class="row">
-                    <div class="col">
-                    <select class="form-select" aria-label="Default select example">
-                        <option selected>Selecciona un pais</option>
-                        <option value="1">One</option>
-                        <option value="2">Two</option>
-                        <option value="3">Three</option>
-                    </select>
-                    </div>
-                    <div class="col">
-                        <button type="button" class="btn btn-success">Buscar</button>
-                    </div>
-                </div>
-                
-                <div class="row g-4">
-                <?php foreach ($model as $modelos){?>
-                    <div class="col-lg-3 col-md-6 wow fadeInUp" data-wow-delay="0.1s">
-                        <div class="team-item">
-                            <h5><?=$modelos['nombre']?> <?=$modelos['apellido']?></h5>
-                            <img class="img-fluid rounded-circle w-100 mb-4" src="<?=$modelos['fotoPerfil']?>">
-                            <div class="d-flex justify-content-center">
-                                <a class="btn btn-square text-primary bg-white m-1" href=""><i class="fab fa-facebook-f"></i></a>
-                                <a class="btn btn-square text-primary bg-white m-1" href=""><i class="fab fa-twitter"></i></a>
-                                <a class="btn btn-square text-primary bg-white m-1" href=""><i class="fab fa-linkedin-in"></i></a>
-                            </div>
-                        </div>
-                    </div>
-                    <?php } ?>
-                </div>
-            </div>
+        <br><br>
+        <div class="container">
+            <h3 class="text-center">Buscador de modelos</h3>
+            <table id="tablaModelo" class="display" style="width:100%">
+                <thead>
+                    <tr>
+                        <th>#</th>
+                        <th>Nombre</th>
+                        <th>Apellido</th>
+                        <th>F. Nacimiento</th>
+                        <th>Dirección</th>
+                        <th>Altura</th>
+                        <th>Peso</th>
+                        <th>F. Registro</th>
+                    </tr>
+                </thead>
+                <tbody>
+                </tbody>
+                <tfoot>
+                    <tr>
+                        <th>#</th>
+                        <th>Nombre</th>
+                        <th>Apellido</th>
+                        <th>F. Nacimiento</th>
+                        <th>Dirección</th>
+                        <th>Altura</th>
+                        <th>Peso</th>
+                        <th>F. Registro</th>
+                    </tr>
+                </tfoot>
+            </table>
         </div>
-        <!-- Team End -->
-
         <!-- Footer Start -->
         <div class="container-fluid bg-dark text-light footer pt-5 wow fadeIn" data-wow-delay="0.1s" style="margin-top: 6rem;">
             <div class="container py-5">
@@ -171,8 +166,20 @@
     <script src="../lib/easing/easing.min.js"></script>
     <script src="../lib/waypoints/waypoints.min.js"></script>
     <script src="../lib/owlcarousel/owl.carousel.min.js"></script>
-
+    <script src="../js/jquery.js"></script>
+    <script src="../js/datatable.js"></script>
     <!-- Template Javascript -->
     <script src="../js/inicio/inicio.js"></script>
+    <script>
+        $(document).ready(function() {
+            $('#tablaModelo').DataTable({
+                "processing": true,
+                "serverSide": true,
+                "ajax": "../models/tablaModelo.php"
+            });
+
+        });
+    </script>
 </body>
+
 </html>

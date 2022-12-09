@@ -174,7 +174,11 @@ session_start();
                     <i class="fas fa-star"></i>
                     <?php } ?>
                     <?php if($item['puntaje']==NULL){?>
-                        
+                      <i class="fa-light fa-star"></i>
+                      <i class="fa-light fa-star"></i>
+                      <i class="fa-light fa-star"></i>
+                      <i class="fa-light fa-star"></i>
+                      <i class="fa-light fa-star"></i>
                     <?php } ?>
                   </div>
 

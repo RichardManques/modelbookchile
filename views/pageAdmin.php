@@ -204,7 +204,7 @@ session_start();
 
 <?php } else { ?>
   <a href="../index.php">
-    <img class="matrix responsive-img" src="../img/matrix.jpg">
+    <p>no teni permisos de nigger pa estar acá</p>
   </a>
 <?php  } ?>
 <script src="https://kit.fontawesome.com/9470b4a918.js" crossorigin="anonymous"></script>
