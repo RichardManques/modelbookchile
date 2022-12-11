@@ -142,58 +142,58 @@ session_start();
         <div class="testi-content grid-2">
           <div class="column-1 reviews">
             <div class="swiper-container">
-            <?php foreach ($_SESSION['comentario'] as $item){?>
-              <div class="swiper-wrapper">
-                <div class="swiper-slide review">
-                  <i class="fas fa-quote-left quote"></i>
-                  <div class="rate">
-                  <?php if($item['puntaje']==5){?>
-                    <i class="fas fa-star"></i>
-                    <i class="fas fa-star"></i>
-                    <i class="fas fa-star"></i>
-                    <i class="fas fa-star"></i>
-                    <i class="fas fa-star"></i>
-                    <?php } ?>
+              <?php foreach ($_SESSION['comentario'] as $item) { ?>
+                <div class="swiper-wrapper">
+                  <div class="swiper-slide review">
+                    <i class="fas fa-quote-left quote"></i>
+                    <div class="rate">
+                      <?php if ($item['puntaje'] == 5) { ?>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                      <?php } ?>
 
-                    <?php if($item['puntaje']==4){?>
-                    <i class="fas fa-star"></i>
-                    <i class="fas fa-star"></i>
-                    <i class="fas fa-star"></i>
-                    <i class="fas fa-star"></i>
-                    <?php } ?>
-                    <?php if($item['puntaje']==3){?>
-                    <i class="fas fa-star"></i>
-                    <i class="fas fa-star"></i>
-                    <i class="fas fa-star"></i>
-                    <?php } ?>
-                    <?php if($item['puntaje']==2){?>
-                    <i class="fas fa-star"></i>
-                    <i class="fas fa-star"></i>
-                    <?php } ?>
-                    <?php if($item['puntaje']==1){?>
-                    <i class="fas fa-star"></i>
-                    <?php } ?>
-                    <?php if($item['puntaje']==NULL){?>
-                      <i class="fa-light fa-star"></i>
-                      <i class="fa-light fa-star"></i>
-                      <i class="fa-light fa-star"></i>
-                      <i class="fa-light fa-star"></i>
-                      <i class="fa-light fa-star"></i>
-                    <?php } ?>
-                  </div>
+                      <?php if ($item['puntaje'] == 4) { ?>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                      <?php } ?>
+                      <?php if ($item['puntaje'] == 3) { ?>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                      <?php } ?>
+                      <?php if ($item['puntaje'] == 2) { ?>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                      <?php } ?>
+                      <?php if ($item['puntaje'] == 1) { ?>
+                        <i class="fas fa-star"></i>
+                      <?php } ?>
+                      <?php if ($item['puntaje'] == NULL) { ?>
+                        <i class="fa-light fa-star"></i>
+                        <i class="fa-light fa-star"></i>
+                        <i class="fa-light fa-star"></i>
+                        <i class="fa-light fa-star"></i>
+                        <i class="fa-light fa-star"></i>
+                      <?php } ?>
+                    </div>
 
-                  <p class="review-text">
-                    <?=$item['comentario']?>
-                  </p>
+                    <p class="review-text">
+                      <?= $item['comentario'] ?>
+                    </p>
 
-                  <div class="review-info">
-                    <h3 class="review-name"><?=$item['nombre']?></h3>
-                    <h5 class="review-job"><?=$item['email']?></h5>
-                    <h5 class="review-name"><?=$item['fechaPublicacion']?></h5>
+                    <div class="review-info">
+                      <h3 class="review-name"><?= $item['nombre'] ?></h3>
+                      <h5 class="review-job"><?= $item['email'] ?></h5>
+                      <h5 class="review-name"><?= $item['fechaPublicacion'] ?></h5>
+                    </div>
                   </div>
                 </div>
-              </div>
-              <?php } ?>  
+              <?php } ?>
               <div class="review-nav swiper-button-prev">
                 <i class="fas fa-long-arrow-alt-left"></i>
               </div>

@@ -10,7 +10,7 @@ class ModeloModel
     {
         $stm = Conexion::conector()->prepare("INSERT INTO modelo 
         VALUES(NULL,:nombre,:apellido,:descripcion,:fechaNacimiento,:celular,:email,:direccion,:altura,
-                :peso,:fechaRegistro,0,:fotoPerfil,:foto2,:foto3,:foto4,:Usuario_rut,:Pais_idPais)");
+                :peso,:fechaRegistro,0,:fotoPerfil,:foto2,:foto3,:foto4,0,:Usuario_rut,:Pais_idPais)");
 
         $stm->bindParam(":nombre", $data['nombre']);
         $stm->bindParam(":apellido", $data['apellido']);
@@ -128,7 +128,7 @@ class ModeloModel
     {
         $sql = '
             select m.idModelo, m.nombre, m.apellido, m.descripcion, m.fechaNacimiento, m.celular, m.email, m.direccion, m.altura, m.peso,
-            m.fechaRegistro, m.estado, m.fotoPerfil, m.foto2, m.foto3, m.foto4, p.nombre "pais"
+            m.fechaRegistro, m.estado, m.fotoPerfil, m.foto2, m.foto3, m.foto4, m.favorito, p.nombre "pais"
             from modelo m 
             inner join pais p 
                 on p.idPais=m.Pais_idPais
@@ -228,19 +228,41 @@ class ModeloModel
         return $stm->execute();
     }
 
-    //AGREGAR MODELOS INTERESADOS PARA AGENCIA
-    public function agregarSeleccionados($data)
-    {
-        $stm = Conexion::conector()->prepare("INSERT INTO seleccionados 
-            VALUES(NULL,:Usuario_rut,:idModelo)");
-        $stm->bindParam(":Usuario_rut", $data['Usuario_rut']);
-        $stm->bindParam(":idModelo", $data['idModelo']);
+    // //AGREGAR MODELOS INTERESADOS PARA AGENCIA
+    // public function agregarSeleccionados($data)
+    // {
+    //     $stm = Conexion::conector()->prepare("INSERT INTO seleccionados 
+    //         VALUES(NULL,:Usuario_rut,:idModelo)");
+    //     $stm->bindParam(":Usuario_rut", $data['Usuario_rut']);
+    //     $stm->bindParam(":idModelo", $data['idModelo']);
+    //     return $stm->execute();
+    // }
+    // //MOSTRAR A TODOS LOS SELECCIONADOS POR LA AGENCIA
+    // public function getAllSeleccionados()
+    // {
+    //     $stm = Conexion::conector()->prepare("SELECT * FROM seleccionados");
+    //     $stm->execute();
+    //     return $stm->fetchAll(\PDO::FETCH_ASSOC);
+    // }
+
+    public function agregarFavorito($idModelo, $favorito){
+        $stm = Conexion::conector()->prepare("UPDATE modelo SET favorito=:A WHERE idModelo=:B ");
+        $stm->bindParam(":A", $favorito);
+        $stm->bindParam(":B", $idModelo);
         return $stm->execute();
     }
-    //MOSTRAR A TODOS LOS SELECCIONADOS POR LA AGENCIA
-    public function getAllSeleccionados()
+
+    public function eliminarFavorito($idModelo, $favorito){
+        $stm = Conexion::conector()->prepare("UPDATE modelo SET favorito=:A WHERE idModelo=:B ");
+        $stm->bindParam(":A", $favorito);
+        $stm->bindParam(":B", $idModelo);
+        return $stm->execute();
+    }
+
+    
+    public function getAllModelosFavoritos()
     {
-        $stm = Conexion::conector()->prepare("SELECT * FROM seleccionados");
+        $stm = Conexion::conector()->prepare("SELECT * FROM modelo WHERE favorito=1");
         $stm->execute();
         return $stm->fetchAll(\PDO::FETCH_ASSOC);
     }

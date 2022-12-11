@@ -8,8 +8,6 @@ use models\ModeloModel as ModeloModel;
 
 require_once("../models/ModeloModel.php");
 $model = new ModeloModel();
-$paises = $model->getPais();
-
 session_start();
 
 ?>
@@ -57,11 +55,28 @@ session_start();
             </div>
         </div>
         <!-- Navbar & Hero Start -->
+        <?php if (isset($_SESSION['agencia'])) { ?>
         <div class="container-xxl position-relative p-0">
             <nav class="navbar navbar-expand-lg navbar-light px-4 px-lg-5 py-3 py-lg-0">
                 <a href="../index.php" class="navbar-brand p-0">
                     <h1 class="m-0">Modelbook</h1>
-                    <!-- <img src="img/logo.png" alt="Logo"> -->
+                </a>
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse">
+                    <span class="fa fa-bars"></span>
+                </button>
+                <div class="collapse navbar-collapse" id="navbarCollapse">
+                    <div class="navbar-nav ms-auto py-0">
+                        <a href="./agencia/inicioAgencia.php" class="nav-item nav-link active">Inicio</a>
+                        <a href="./buscador.php" class="nav-item nav-link">Buscar</a>
+                    </div>
+                </div>
+            </nav>
+        </div>
+        <?php }else{?>
+            <div class="container-xxl position-relative p-0">
+            <nav class="navbar navbar-expand-lg navbar-light px-4 px-lg-5 py-3 py-lg-0">
+                <a href="../index.php" class="navbar-brand p-0">
+                    <h1 class="m-0">Modelbook</h1>
                 </a>
                 <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse">
                     <span class="fa fa-bars"></span>
@@ -71,12 +86,12 @@ session_start();
                         <a href="../index.php" class="nav-item nav-link active">Inicio</a>
                         <a href="../views/buscador.php" class="nav-item nav-link">Buscar</a>
                     </div>
-                    <a href="../views/login.php" class="btn btn-light rounded-pill text-primary py-2 px-4 ms-lg-5">Iniciar sesión</a>
                 </div>
             </nav>
         </div>
+        <?php }?>
         <!-- Navbar & Hero End -->
-        <br><br>
+        <div class="container-xxl py-6">
         <div class="container">
             <h3 class="text-center">Buscador de modelos</h3>
             <table id="tablaModelo" class="display" style="width:100%">
@@ -107,6 +122,7 @@ session_start();
                     </tr>
                 </tfoot>
             </table>
+        </div>
         </div>
         <!-- Footer Start -->
         <div class="container-fluid bg-dark text-light footer pt-5 wow fadeIn" data-wow-delay="0.1s" style="margin-top: 6rem;">

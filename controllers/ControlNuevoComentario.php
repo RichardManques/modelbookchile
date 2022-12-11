@@ -34,7 +34,7 @@ class ControlNuevoComentario{
 
         if($this->email=="" || $this->nombre=="" || $this->comentario==""){
             $_SESSION['errorComentario']="Complete los campos..";
-            header("Location:../views/perfilModelo.php");
+            header("Location:../views/agencia/perfilModeloAgencia.php");
             return;
         }
         
@@ -51,7 +51,7 @@ class ControlNuevoComentario{
         $count = $model->nuevoComentario($data);
         if ($count == 1) {
             $_SESSION["respComentario"] = "Comentario Creado con exito, espere validacion del Administrador...";
-            header("Location:../views/perfilModelo.php");
+            header("Location:../views/agencia/perfilModeloAgencia.php");
             
         }else{
             $_SESSION["errorComentario"] = "Hubo un error a nivel de BD";

@@ -8,5 +8,9 @@
         unset($_SESSION["admin"]);
         session_destroy();
     }
+    if (isset($_SESSION["agencia"])) { 
+        unset($_SESSION["agencia"]);
+        session_destroy();
+    }
     header("Location: ../index.php");
 

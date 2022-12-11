@@ -3,8 +3,8 @@ function countChars(obj){
   var strLength = obj.value.length;
   
   if(strLength > maxLength){
-      document.getElementById("charNum").innerHTML = '<span style="color: red;">'+strLength+' / '+maxLength+' characters</span>';
+      document.getElementById("charNum").innerHTML = '<span style="color: red;">'+strLength+' / '+maxLength+' caracteres</span>';
   }else{
-      document.getElementById("charNum").innerHTML = strLength+' / '+maxLength+' characters';
+      document.getElementById("charNum").innerHTML = strLength+' / '+maxLength+' caracteres';
   }
 }

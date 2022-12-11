@@ -33,6 +33,9 @@
             <a href="./loginAdmin.php">
               <input type="button" value="Acceso admin" class="btn solid" href="./loginAdmin.php"/>
             </a>
+            <a href="./loginAgencia.php">
+              <input type="button" value="Acceso agencia" class="btn solid" href="./loginAgencia.php"/>
+            </a>
           </form>
 
           <form action="../controllers/ControlNuevoUsuario.php" method="POST" class="sign-up-form">
