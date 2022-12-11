@@ -108,7 +108,7 @@ session_start();
     <br>
     <br>
     <div class="container">
-      <h4 class="text-center">Supervisión de modelos</h4>
+      <h4 class="text-center">Supervisión de comentarios</h4>
       <form action="../controllers/ControlListaComentarios.php" method="POST">
         <table class="table">
           <thead class="table-dark">

@@ -29,7 +29,7 @@
               <i class="fas fa-lock"></i>
               <input id="clave" name="clave" type="password" placeholder="Contraseña" />
             </div>
-            <input type="submit" value="Entrar" class="btn solid" />
+            <input type="submit" value="Entrar modelo" class="btn solid" />
             <a href="./loginAdmin.php">
               <input type="button" value="Acceso admin" class="btn solid" href="./loginAdmin.php"/>
             </a>

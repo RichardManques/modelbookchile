@@ -44,6 +44,7 @@ session_start();
 </head>
 
 <body>
+<?php if (isset($_SESSION['agencia'])) { ?>
     <div class="container-xxl bg-white p-0">
         <!-- Spinner Start -->
         <div id="spinner" class="show bg-white position-fixed translate-middle w-100 vh-100 top-50 start-50 d-flex align-items-center justify-content-center">
@@ -165,6 +166,9 @@ session_start();
 
     <!-- Template Javascript -->
     <script src="../../js/inicio/inicio.js"></script>
+    <?php } else { ?>
+        <a href="../../index.php"> no teni permiso pa estar aqui</a>
+    <?php } ?>
 </body>
 
 </html>

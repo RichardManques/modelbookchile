@@ -101,38 +101,41 @@ session_start();
         <div class="section-header">
           <h3 class="title" data-title="albúm de fotos"></h3>
         </div>
-
-        <div class="section-body">
-          <div class="grid">
-            <div class="grid-item logo-design">
-              <div class="gallery-image">
-                <img src="<?= $_SESSION['modelo']['fotoPerfil'] ?>" />
-                <div class="img-overlay">
+        <div class="grid">
+          <div class="section-body">
+            <div class="grid">
+              <div class="grid-item logo-design">
+                <div class="gallery-image">
+                  <img src="<?= $_SESSION['modelo']['fotoPerfil'] ?>" />
+                  <div class="img-overlay">
+                  </div>
                 </div>
               </div>
-            </div>
-            <div class="grid-item webdev">
-              <div class="gallery-image">
-                <img src="<?= $_SESSION['modelo']['foto2'] ?>" />
-                <div class="img-overlay">
+              <div class="grid-item webdev">
+                <div class="gallery-image">
+                  <img src="<?= $_SESSION['modelo']['foto2'] ?>" />
+                  <div class="img-overlay">
+                  </div>
                 </div>
               </div>
-            </div>
-            <div class="grid-item webdev">
-              <div class="gallery-image">
-                <img src="<?= $_SESSION['modelo']['foto3'] ?>" />
-                <div class="img-overlay">
+              <div class="grid-item webdev">
+                <div class="gallery-image">
+                  <img src="<?= $_SESSION['modelo']['foto3'] ?>" />
+                  <div class="img-overlay">
+                  </div>
                 </div>
               </div>
             </div>
           </div>
         </div>
+
       </div>
       <h3></h3>
     </section>
     <!-- FIN SECCION PRESENTACION MODELO -->
 
     <!-- SECCION COMENTARIOS -->
+
     <section class="testimonials section" id="testimonials">
       <div class="container">
         <div class="section-header">
@@ -142,8 +145,8 @@ session_start();
         <div class="testi-content grid-2">
           <div class="column-1 reviews">
             <div class="swiper-container">
-              <?php foreach ($_SESSION['comentario'] as $item) { ?>
-                <div class="swiper-wrapper">
+              <div class="swiper-wrapper">
+                <?php foreach ($_SESSION['comentario'] as $item) { ?>
                   <div class="swiper-slide review">
                     <i class="fas fa-quote-left quote"></i>
                     <div class="rate">
@@ -191,9 +194,10 @@ session_start();
                       <h5 class="review-job"><?= $item['email'] ?></h5>
                       <h5 class="review-name"><?= $item['fechaPublicacion'] ?></h5>
                     </div>
+
                   </div>
-                </div>
-              <?php } ?>
+                <?php } ?>
+              </div>
               <div class="review-nav swiper-button-prev">
                 <i class="fas fa-long-arrow-alt-left"></i>
               </div>
@@ -205,6 +209,7 @@ session_start();
         </div>
       </div>
     </section>
+
     <!-- FIN SECCION COMENTARIOS -->
 
     <!-- SECCION DATOS PERSONALES Y CONTACTO MODELO -->

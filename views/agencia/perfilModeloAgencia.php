@@ -161,10 +161,9 @@ session_start();
 
           <div class="testi-content grid-2">
             <div class="column-1 reviews">
-            <?php foreach ($_SESSION['comentario'] as $item) { ?>
               <div class="swiper-container">
-                
-                  <div class="swiper-wrapper">
+                <div class="swiper-wrapper">
+                  <?php foreach ($_SESSION['comentario'] as $item) { ?>
                     <div class="swiper-slide review">
                       <i class="fas fa-quote-left quote"></i>
                       <div class="rate">
@@ -213,8 +212,8 @@ session_start();
                         <h5 class="review-name"><?= $item['fechaPublicacion'] ?></h5>
                       </div>
                     </div>
-                  </div>
-                
+                  <?php } ?>
+                </div>
                 <div class="review-nav swiper-button-prev">
                   <i class="fas fa-long-arrow-alt-left"></i>
                 </div>
@@ -223,7 +222,7 @@ session_start();
                 </div>
 
               </div>
-                <?php } ?>
+
             </div>
           </div>
         </div>
@@ -254,27 +253,42 @@ session_start();
                 </div>
               </div>
             </div>
-            <p class="clasificacion">
-              <input id="radio1" type="radio" name="estrellas" value="5">
-              <!--
-                                    --><label for="radio1">★</label>
-              <!--
-                                    --><input id="radio2" type="radio" name="estrellas" value="4">
-              <!--
-                                    --><label for="radio2">★</label>
-              <!--
-                                    --><input id="radio3" type="radio" name="estrellas" value="3">
-              <!--
-                                    --><label for="radio3">★</label>
-              <!--
-                                    --><input id="radio4" type="radio" name="estrellas" value="2">
-              <!--
-                                    --><label for="radio4">★</label>
-              <!--
-                                    --><input id="radio5" type="radio" name="estrellas" value="1">
-              <!--
-                                    --><label for="radio5">★</label>
-            </p>
+
+            <div class="row">
+              <div class="col order-last">
+                <input id="radio1" type="radio" name="estrellas" value="5">
+                <label for="radio1">★★★★★</label>
+              </div>
+
+              <div class="col">
+                <input id="radio4" type="radio" name="estrellas" value="2">
+                <label for="radio4">★★</label>
+              </div>
+
+              <div class="col">
+                <input id="radio3" type="radio" name="estrellas" value="3">
+                <label for="radio3">★★★</label>
+              </div>
+              
+              <div class="col">
+                <input id="radio2" type="radio" name="estrellas" value="4">
+                <label for="radio2">★★★★</label>
+              </div>
+
+              <div class="col order-first">
+                <input id="radio5" type="radio" name="estrellas" value="1">
+                <label for="radio5">★</label>
+              </div>
+            </div>
+
+
+
+
+
+
+
+
+
             <br>
             <button class="btn black ancho-100 center" name="bt_comentar" value="<?= $_SESSION['modelo']["idModelo"] ?>">
               Comentar
