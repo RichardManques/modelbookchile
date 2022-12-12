@@ -21,7 +21,7 @@ class ControlNuevoUsuario{
     public function guardarUsuario(){
         session_start();
         if ($this->rut=="" || $this->email=="" || $this->password=="") {
-            $_SESSION["error"] = "campos vacios";
+            $_SESSION["error"] = "Los campos se encuentran vacíos";
             header("Location: ../views/login.php");
             return;
         }
@@ -39,7 +39,8 @@ class ControlNuevoUsuario{
                     ["rut"=>$this->rut,"email"=>$this->email,"password"=>$this->password]
                 );
                 if ($count == 1) {
-                    $_SESSION["respuesta"] = "Usuario Creado con exito";
+                    $_SESSION["respuesta"] = "Su usuario ha sido creado correctamente, inicie sesión.";
+                    header("Location: ../views/login.php");
                 }else{
                     $_SESSION["error"] = "Hubo un error a nivel de BD";
                 }
@@ -50,7 +51,7 @@ class ControlNuevoUsuario{
         }else{
             $_SESSION["error"] = "Usuario ya registrado";
         }
-        header("Location: ../views/crearModelo.php");
+        header("Location: ../views/login.php");
     
     }
 

@@ -54,7 +54,7 @@
             </div>
             <input type="submit" class="btn" value="Registrarse"/>
           </form>
-          <p class="red-text">
+          <p class="text-center">
                     <?php
                         if(isset($_SESSION['error'])){
                             echo $_SESSION['error'];

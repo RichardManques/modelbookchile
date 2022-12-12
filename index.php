@@ -1,13 +1,14 @@
 <?php
-    ini_set('display_errors', 1);
-    ini_set('display_startup_errors', 1);
-    error_reporting(E_ALL);
-    // OBTENER MODELOS ACTIVOS DE BD
-    use models\ModeloModel as ModeloModel;
-    require_once("./models/ModeloModel.php");
-    $model = new ModeloModel();
-    $modelos = $model->getAllModelosActivos();
-    session_start();
+ini_set('display_errors', 1);
+ini_set('display_startup_errors', 1);
+error_reporting(E_ALL);
+// OBTENER MODELOS ACTIVOS DE BD
+use models\ModeloModel as ModeloModel;
+
+require_once("./models/ModeloModel.php");
+$model = new ModeloModel();
+$modelos = $model->getAllModelosActivos();
+session_start();
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -25,7 +26,7 @@
     <!-- Google Web Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Heebo:wght@400;500;600&family=Inter:wght@700;800&display=swap" rel="stylesheet"> 
+    <link href="https://fonts.googleapis.com/css2?family=Heebo:wght@400;500;600&family=Inter:wght@700;800&display=swap" rel="stylesheet">
 
     <!-- Icon Font Stylesheet -->
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.10.0/css/all.min.css" rel="stylesheet">
@@ -78,79 +79,87 @@
         <div class="container-xxl py-6">
             <div class="container">
                 <div class="mx-auto text-center wow fadeInUp" data-wow-delay="0.1s" style="max-width: 600px;">
+                    <p class=text-center">
+                        <?php
+                        if (isset($_SESSION['respCrearModelo'])) {
+                            echo $_SESSION['respCrearModelo'];
+                            unset($_SESSION['respCrearModelo']);
+                        }
+                        ?>
+                    </p>
                     <h2 class="mb-5">Modelos</h2>
                 </div>
                 <form action="./controllers/ControlPerfilModelo.php" method="POST">
-                <div class="row g-4">
+                    <div class="row g-4">
 
-                <?php foreach ($modelos as $modelos){?>
-                    <div class="col-lg-3 col-md-6 wow fadeInUp" data-wow-delay="0.1s">
-                        <div class="team-item">
-                            <h5><?=$modelos['nombre']?> <?=$modelos['apellido']?></h5>
-                            <img class="img-fluid rounded-circle" src="<?=$modelos['fotoPerfil']?>" height="400px" width="400px">
-                            
-                            <div class="d-flex justify-content-center">
-                                <a class="btn btn-square text-primary bg-white m-1" href=""><i class="fab fa-facebook-f"></i></a>
-                                <a class="btn btn-square text-primary bg-white m-1" href=""><i class="fab fa-twitter"></i></a>
-                                <a class="btn btn-square text-primary bg-white m-1" href=""><i class="fab fa-linkedin-in"></i></a>
-                            </div>
-                            <br>
-                            <div class="row">
-                                <div class="col">
-                                    <button class="btn btn-success" name="bt_perfil" value="<?=$modelos["idModelo"]?>">
-                                        <a>Ver perfil</a>
-                                    </button>
+                        <?php foreach ($modelos as $modelos) { ?>
+                            <div class="col-lg-3 col-md-6 wow fadeInUp" data-wow-delay="0.1s">
+                                <div class="team-item">
+                                    <h5><?= $modelos['nombre'] ?> <?= $modelos['apellido'] ?></h5>
+                                    <img class="img-fluid rounded-circle" src="<?= $modelos['fotoPerfil'] ?>" height="400px" width="400px">
+
+                                    <div class="d-flex justify-content-center">
+                                        <a class="btn btn-square text-primary bg-white m-1" href=""><i class="fab fa-facebook-f"></i></a>
+                                        <a class="btn btn-square text-primary bg-white m-1" href=""><i class="fab fa-twitter"></i></a>
+                                        <a class="btn btn-square text-primary bg-white m-1" href=""><i class="fab fa-linkedin-in"></i></a>
+                                    </div>
+                                    <br>
+                                    <div class="row">
+                                        <div class="col">
+                                            <button class="btn btn-success" name="bt_perfil" value="<?= $modelos["idModelo"] ?>">
+                                                <a>Ver perfil</a>
+                                            </button>
+                                        </div>
+                                    </div>
                                 </div>
                             </div>
-                        </div>
-                    </div>
-                    <?php } ?>
+                        <?php } ?>
 
                 </form>
+            </div>
+        </div>
+    </div>
+    <!-- Team End -->
+
+    <!-- Footer Start -->
+    <div class="container-fluid bg-dark text-light footer pt-5 wow fadeIn" data-wow-delay="0.1s" style="margin-top: 6rem;">
+        <div class="container py-5">
+            <div class="row g-5">
+                <div class="col-md-6 col-lg-4">
+                    <h5 class="text-white mb-4">Modelbook chile</h5>
+                    <p><i class="fa fa-map-marker-alt me-3"></i>Talca, av san miguel 1322</p>
+                    <p><i class="fa fa-phone-alt me-3"></i>+56 9 7595 1564</p>
+                    <p><i class="fa fa-envelope me-3"></i>modelbookchile@info.cl</p>
+                    <div class="d-flex pt-2">
+                        <a class="btn btn-outline-light btn-social" href=""><i class="fab fa-twitter"></i></a>
+                        <a class="btn btn-outline-light btn-social" href=""><i class="fab fa-facebook-f"></i></a>
+                        <a class="btn btn-outline-light btn-social" href=""><i class="fab fa-youtube"></i></a>
+                        <a class="btn btn-outline-light btn-social" href=""><i class="fab fa-instagram"></i></a>
+                        <a class="btn btn-outline-light btn-social" href=""><i class="fab fa-linkedin-in"></i></a>
+                    </div>
+                </div>
+                <div class="col-md-6 col-lg-4">
+                    <h5 class="text-white mb-4">Ayuda</h5>
+                    <a class="btn btn-link" href="">Acerca de nosotros</a>
+                    <a class="btn btn-link" href="">Contáctanos</a>
+                    <a class="btn btn-link" href="">Politicas de privacidad</a>
+                    <a class="btn btn-link" href="">Términos y condiciones</a>
+                </div>
+                <div class="col-md-6 col-lg-4">
+                    <h5 class="text-white mb-4">Enlaces más usados</h5>
+                    <a class="btn btn-link" href="">Contáctanos</a>
+                    <a class="btn btn-link" href="">Politicas de privacidad</a>
+                    <a class="btn btn-link" href="">Términos y condiciones</a>
+                    <a class="btn btn-link" href="">Acerca de nosotros</a>
                 </div>
             </div>
         </div>
-        <!-- Team End -->
-
-        <!-- Footer Start -->
-        <div class="container-fluid bg-dark text-light footer pt-5 wow fadeIn" data-wow-delay="0.1s" style="margin-top: 6rem;">
-            <div class="container py-5">
-                <div class="row g-5">
-                    <div class="col-md-6 col-lg-4">
-                        <h5 class="text-white mb-4">Modelbook chile</h5>
-                        <p><i class="fa fa-map-marker-alt me-3"></i>Talca, av san miguel 1322</p>
-                        <p><i class="fa fa-phone-alt me-3"></i>+56 9 7595 1564</p>
-                        <p><i class="fa fa-envelope me-3"></i>modelbookchile@info.cl</p>
-                        <div class="d-flex pt-2">
-                            <a class="btn btn-outline-light btn-social" href=""><i class="fab fa-twitter"></i></a>
-                            <a class="btn btn-outline-light btn-social" href=""><i class="fab fa-facebook-f"></i></a>
-                            <a class="btn btn-outline-light btn-social" href=""><i class="fab fa-youtube"></i></a>
-                            <a class="btn btn-outline-light btn-social" href=""><i class="fab fa-instagram"></i></a>
-                            <a class="btn btn-outline-light btn-social" href=""><i class="fab fa-linkedin-in"></i></a>
-                        </div>
-                    </div>
-                    <div class="col-md-6 col-lg-4">
-                        <h5 class="text-white mb-4">Ayuda</h5>
-                        <a class="btn btn-link" href="">Acerca de nosotros</a>
-                        <a class="btn btn-link" href="">Contáctanos</a>
-                        <a class="btn btn-link" href="">Politicas de privacidad</a>
-                        <a class="btn btn-link" href="">Términos y condiciones</a>
-                    </div>
-                    <div class="col-md-6 col-lg-4">
-                        <h5 class="text-white mb-4">Enlaces más usados</h5>
-                        <a class="btn btn-link" href="">Contáctanos</a>
-                        <a class="btn btn-link" href="">Politicas de privacidad</a>
-                        <a class="btn btn-link" href="">Términos y condiciones</a>
-                        <a class="btn btn-link" href="">Acerca de nosotros</a>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <!-- Footer End -->
+    </div>
+    <!-- Footer End -->
 
 
-        <!-- Back to Top -->
-        <a href="#" class="btn btn-lg btn-primary btn-lg-square back-to-top"><i class="bi bi-arrow-up"></i></a>
+    <!-- Back to Top -->
+    <a href="#" class="btn btn-lg btn-primary btn-lg-square back-to-top"><i class="bi bi-arrow-up"></i></a>
     </div>
 
     <!-- JavaScript Libraries -->

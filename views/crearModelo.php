@@ -45,7 +45,7 @@ session_start();
         </div>
     </nav>
     <div class="container">
-        <h4>Ingresa tus datos de Modelo</h4>
+        <h4 class="text-center">Ingresa tus datos de Modelo</h4>
         <form action="../controllers/ControlNuevoModelo.php" method="POST" enctype="multipart/form-data">
             <div class="row">
                 <div class="col">
@@ -138,14 +138,6 @@ session_start();
             if (isset($_SESSION['errorCrearModelo'])) {
                 echo $_SESSION['errorCrearModelo'];
                 unset($_SESSION['errorCrearModelo']);
-            }
-            ?>
-        </p>
-        <p class=text-center">
-            <?php
-            if (isset($_SESSION['respCrearModelo'])) {
-                echo $_SESSION['respCrearModelo'];
-                unset($_SESSION['respCrearModelo']);
             }
             ?>
         </p>
