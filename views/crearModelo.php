@@ -141,7 +141,7 @@ session_start();
             }
             ?>
         </p>
-        <p class="green-text">
+        <p class=text-center">
             <?php
             if (isset($_SESSION['respCrearModelo'])) {
                 echo $_SESSION['respCrearModelo'];

@@ -51,13 +51,12 @@ session_start();
     <br>
     <div class="container">
       <div class="row">
-        <br>
         <!-- ========== FORMULARIO EDITAR ESTADO MODELO POR ADMIN ========== -->
         <div class="container border">
           <?php if (isset($_SESSION['editar'])) { ?>
             <form action="../controllers/ControlEditarModelo.php" method="POST">
               <br>
-              <h5 class="text-center">Editar Modelo</h5>
+              <h5 class="text-center">Editar disponibilidad del modelo</h5>
               <br>
               <div class="row">
                 <div class="col">
@@ -76,17 +75,17 @@ session_start();
                   <input readonly type="text" class="form-control" aria-label="Username" aria-describedby="basic-addon1" id="apellido" name="apellido" value="<?= $_SESSION['modelo']['apellido'] ?>">
                 </div>
                 <div class="col">
-                  <span class="input-group-text">Estado</span>
-                  <select class="form-control" name="estado" aria-label="Default select example">
-                    <option value=0>Inactivo</option>
-                    <option value=1>Activo</option>
+                  <span class="input-group-text">Estado del modelo</span>
+                  <select class="form-select" name="estado" aria-label="Default select example">
+                    <option value=0>Desahabilitar modelo</option>
+                    <option value=1>Habilitar modelo</option>
                   </select>
                 </div>
               </div>
               <br>
               <div class="row">
                 <div class="col text-center">
-                  <button class="btn btn-warning">Editar Modelo</button>
+                  <button class="btn btn-warning">Editar modelo</button>
                 </div>
               </div>
               <br>
@@ -102,11 +101,11 @@ session_start();
             }
       ?>
     </p>
-    <p class="green-text">
+    <p class="text-center">
       <?php
-            if (isset($_SESSION['respuesta'])) {
-              echo $_SESSION['respuesta'];
-              unset($_SESSION['respuesta']);
+            if (isset($_SESSION['respEstadoModelo'])) {
+              echo $_SESSION['respEstadoModelo'];
+              unset($_SESSION['respEstadoModelo']);
             }
       ?>
     </p>
@@ -155,7 +154,7 @@ session_start();
                 <td>
                   <?php if ($item["estado"] == 0) { ?>
                     <p class="text-danger">
-                      Inactivo
+                      Deshabilitado
                     </p>
                   <?php } else { ?>
                     <p class="text-success">
@@ -178,8 +177,8 @@ session_start();
                       Inactivo
                     </p>
                   <?php } else { ?>
-                    <p>
-                      Activo
+                    <p class="text-success">
+                      Habilitado
                     </p>
                   <?php } ?>
                 </td>

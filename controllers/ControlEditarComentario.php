@@ -27,11 +27,11 @@ class ControlEditarComentario{
         $count = $model->editarComentario($this->idComentario, $data);
         
         if ($count == 1) {
-            $_SESSION["respuestaEstado"] = "Estado Actualizado";
+            $_SESSION["respuestaEstado"] = "El estado del comentario se ha actualizado!";
         } else {
             $_SESSION["errorEstado"] = "Error en la BD";
         }
-        header("Location: ../views/pageAdmin.php");
+        header("Location: ../views/seccionComentarios.php");
     }
 }
 

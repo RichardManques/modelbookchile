@@ -27,7 +27,7 @@ class ControlEditarModelo{
         $count = $model->editarEstado($this->idModelo, $data);
         
         if ($count == 1) {
-            $_SESSION["respuestaEstado"] = "Estado Actualizado";
+            $_SESSION["respEstadoModelo"] = "Estado Actualizado";
         } else {
             $_SESSION["errorEstado"] = "Error en la BD";
         }
