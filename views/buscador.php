@@ -191,7 +191,10 @@ session_start();
             $('#tablaModelo').DataTable({
                 "processing": true,
                 "serverSide": true,
-                "ajax": "../models/tablaModelo.php"
+                "ajax": "../models/tablaModelo.php",
+                language:{
+                    url:'../js/Spanish.json'
+                }
             });
 
         });
